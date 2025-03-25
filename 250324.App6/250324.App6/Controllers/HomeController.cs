@@ -37,7 +37,7 @@ namespace _250324.App6.Controllers
                 double s = Math.Sqrt(p*(p-a)*(p-b)*(p-c));
                 if (a == b && a == c)
                 {
-                    return Content($"Equilateral triangle - tam giac deu\nP = {p*2}\nS = {s}"); //deu
+                    return Content($"Equilateral triangle - tam giac deu\tP = {p*2}\tS = {s}"); //deu
                 }
                 else
                 {
@@ -69,7 +69,26 @@ namespace _250324.App6.Controllers
 
         public ActionResult Ex4(string s)
         {
-            if (s.Equals("a") || s.Equals("a") || s.Equals("a") || s.Equals("a") || s.Equals("a") || s.Equals("a"))
+            if (s.Equals("a") || s.Equals("e") || s.Equals("i") || s.Equals("o") || s.Equals("or") || s.Equals("u"))
+            {
+                return Content("This is a Vowel");
+            }
+            else 
+            {
+                return Content("This is not a Vowel");
+            }
+        }
+
+        public ActionResult Ex5(int n)
+        {
+            int s1=0;
+            double s2=0;
+            for (int i=1; i<=n; i++)
+            {
+                s1=s1+i;
+                s2=s2+1/(double)i;
+            }
+            return Content($"S1 = {s1}\nS2 = {s2}");
         }
     }
 }
