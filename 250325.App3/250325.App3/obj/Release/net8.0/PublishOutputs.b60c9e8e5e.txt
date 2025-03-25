@@ -1,0 +1,7 @@
+E:\APTECH - IT\MVC\250325.App3\250325.App3\obj\Release\net8.0\PubTmp\Out\250325.App3.exe
+E:\APTECH - IT\MVC\250325.App3\250325.App3\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
+E:\APTECH - IT\MVC\250325.App3\250325.App3\obj\Release\net8.0\PubTmp\Out\appsettings.json
+E:\APTECH - IT\MVC\250325.App3\250325.App3\obj\Release\net8.0\PubTmp\Out\250325.App3.dll
+E:\APTECH - IT\MVC\250325.App3\250325.App3\obj\Release\net8.0\PubTmp\Out\250325.App3.deps.json
+E:\APTECH - IT\MVC\250325.App3\250325.App3\obj\Release\net8.0\PubTmp\Out\250325.App3.runtimeconfig.json
+E:\APTECH - IT\MVC\250325.App3\250325.App3\obj\Release\net8.0\PubTmp\Out\250325.App3.pdb
