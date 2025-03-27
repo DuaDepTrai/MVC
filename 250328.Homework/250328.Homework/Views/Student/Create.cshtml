@@ -1,0 +1,30 @@
+﻿@model StudentManagementMVC.Models.Student
+
+@{
+    ViewBag.Title = "Nhập thông tin sinh viên";
+}
+
+<h2>Nhập thông tin sinh viên</h2>
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>Họ và tên:</td>
+            <td>@Html.TextBoxFor(m => m.Name)</td>
+        </tr>
+        <tr>
+            <td>Tuổi:</td>
+            <td>@Html.TextBoxFor(m => m.Age, new { type = "number" })</td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>@Html.TextBoxFor(m => m.Email)</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Lưu" />
+            </td>
+        </tr>
+    </table>
+}

@@ -1,0 +1,24 @@
+﻿@model StudentManagementMVC.Models.Student
+
+@{
+    ViewBag.Title = "Thông tin sinh viên";
+}
+
+<h2>Thông tin sinh viên vừa nhập</h2>
+<table border="1" width="50%">
+    <tr>
+        <td><b>Họ và tên:</b></td>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <td><b>Tuổi:</b></td>
+        <td>@Model.Age</td>
+    </tr>
+    <tr>
+        <td><b>Email:</b></td>
+        <td>@Model.Email</td>
+    </tr>
+</table>
+
+<br />
+<a href="@Url.Action("Index", "Student")">Quay lại danh sách</a>

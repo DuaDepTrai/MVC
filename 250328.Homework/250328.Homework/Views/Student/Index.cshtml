@@ -1,0 +1,27 @@
+﻿@model List<StudentManagementMVC.Models.Student>
+
+@{
+    ViewBag.Title = "Danh sách sinh viên";
+}
+
+<h2>Danh sách sinh viên</h2>
+<table border="1" width="70%">
+    <tr>
+        <th>ID</th>
+        <th>Họ và tên</th>
+        <th>Tuổi</th>
+        <th>Email</th>
+    </tr>
+    @foreach (var student in Model)
+    {
+        <tr>
+            <td>@student.Id</td>
+            <td>@student.Name</td>
+            <td>@student.Age</td>
+            <td>@student.Email</td>
+        </tr>
+    }
+</table>
+
+<br />
+<a href="@Url.Action("Create", "Student")">Thêm sinh viên</a>
