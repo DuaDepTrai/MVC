@@ -1,0 +1,65 @@
+﻿@model IEnumerable<FistAppMVC.Models.Products>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <table width="100%" border="1">
+            <tr>
+                <td colspan="2">Thông tin của sản phẩm</td>
+            </tr>
+            <tr>
+                <td width="30%">ProductID</td>
+                <td>@ViewBag.Product.ProductID</td>
+            </tr>
+            <tr>
+                <td width="30%">ProductName</td>
+                <td>@ViewBag.Product.ProductName</td>
+            </tr>
+        </table>
+        <br />
+
+        <table width="100%" border="1">
+            <tr>
+                <td width="10%">ProductID</td>
+                <td width="30%">ProductName</td>
+                <td width="10%">QuantityPerUnit</td>
+                <td width="20%">UnitPrice</td>
+                <td width="15%">UnitsInStock</td>
+                <td width="15%">UnitsOnOrder</td>
+            </tr>
+
+            @{
+                foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td width="10%">@item.ProductID</td>
+                        <td width="30%">@item.ProductName</td>
+                        <td width="10%">@item.QuantityPerUnit</td>
+                        <td width="20%">@item.UnitPrice</td>
+                        <td width="15%">@item.UnitsInStock</td>
+                        <td width="15%">@item.UnitsOnOrder</td>
+                    </tr>
+
+                }
+            }
+
+
+
+
+        </table>
+
+
+    </div>
+</body>
+</html>

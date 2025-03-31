@@ -1,0 +1,96 @@
+﻿@model IEnumerable<_250328.AppProduct.Models.Products>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <table width="90%">
+            <tr>
+                <td colspan="2"> Thông tin sản phẩm</td>
+            </tr>
+            <tr>
+                <td width="10%"> ProductID  </td>
+                <td> @ViewBag.Product.ProductID  </td>
+            </tr>
+            <tr>
+                <td width="10%"> ProductName  </td>
+                <td> @ViewBag.Product.ProductName  </td>
+            </tr>
+            <tr>
+                <td width="10%"> CategoryID  </td>
+                <td> @ViewBag.Product.CategoryID  </td>
+            </tr>
+            <tr>
+                <td width="10%"> SuplierID  </td>
+                <td> @ViewBag.Product.SuplierID  </td>
+            </tr>
+            <tr>
+                <td width="10%"> QuantityPerUnit  </td>
+                <td> @ViewBag.Product.QuantityPerUnit  </td>
+            </tr>
+            <tr>
+                <td width="10%"> UnitPrice  </td>
+                <td> @ViewBag.Product.UnitPrice  </td>
+            </tr>
+            <tr>
+                <td width="10%"> UnitsInStock  </td>
+                <td> @ViewBag.Product.UnitsInStock  </td>
+            </tr>
+            <tr>
+                <td width="10%"> UnitsOnOrder  </td>
+                <td> @ViewBag.Product.UnitsOnOrder  </td>
+            </tr>
+            <tr>
+                <td width="10%"> ReorderLevel  </td>
+                <td> @ViewBag.Product.ReorderLevel  </td>
+            </tr>
+            <tr>
+                <td width="10%"> Discontinued  </td>
+                <td> @ViewBag.Product.Discontinued  </td>
+            </tr>
+        </table>
+        <br />
+        <table width="90%" border="1">
+            <tr>
+                <td width="10%">ProductID</td>
+                <td width="10%">ProductName</td>
+                <td width="10%">CategoryID</td>
+                <td width="10%">SuplierID</td>
+                <td width="10%">QuantityPerUnit</td>
+                <td width="10%">UnitPrice</td>
+                <td width="10%">UnitsInStock</td>
+                <td width="10%">UnitsOnOrder</td>
+                <td width="10%">ReorderLevel</td>
+                <td width="10%">Discontinued</td>
+            </tr>
+
+            @{ 
+                foreach (var item in Model)
+            {
+                        <tr>
+                            <td width="10%">@item.ProductID</td>
+                            <td width="10%">@item.ProductName</td>
+                            <td width="10%">@item.CategoryID</td>
+                            <td width="10%">@item.SuplierID</td>
+                            <td width="10%">@item.QuantityPerUnit</td>
+                            <td width="10%">@item.UnitPrice</td>
+                            <td width="10%">@item.UnitsInStock</td>
+                            <td width="10%">@item.UnitsOnOrder</td>
+                            <td width="10%">@item.ReorderLevel</td>
+                            <td width="10%">@item.Discontinued</td>
+                        </tr>
+            }
+            }
+        </table>
+    </div>
+</body>
+</html>

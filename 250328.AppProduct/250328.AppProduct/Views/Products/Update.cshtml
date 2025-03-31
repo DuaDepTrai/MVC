@@ -1,0 +1,63 @@
+﻿@model _250328.AppProduct.Models.Products
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Update</title>
+</head>
+<body>
+    <div>
+        <table width="90%">
+            <tr>
+                <td colspan="2"> Thông tin sản phẩm</td>
+            </tr>
+            <tr>
+                <td width="10%">@Html.DisplayNameFor(model => model.ProductID) </td>
+                <td> @Html.DisplayFor(model => model.ProductID)  </td>
+            </tr>
+            <tr>
+                <td width="10%"> @Html.DisplayNameFor(model => model.ProductName)  </td>
+                <td> @Html.TextBoxFor(model => model.ProductName)  </td>
+            </tr>
+            <tr>
+                <td width="10%"> @Html.DisplayNameFor(model => model.CategoryID)  </td>
+                <td> @Html.TextBoxFor(model => model.CategoryID)  </td>
+            </tr>
+            <tr>
+                <td width="10%"> @Html.DisplayNameFor(model => model.SuplierID)  </td>
+                <td> @Html.TextBoxFor(model => model.SuplierID)  </td>
+            </tr>
+            <tr>
+                <td width="10%"> @Html.DisplayNameFor(model => model.QuantityPerUnit)  </td>
+                <td> @Html.TextBoxFor(model => model.QuantityPerUnit)  </td>
+            </tr>
+            <tr>
+                <td width="10%"> @Html.DisplayNameFor(model => model.UnitPrice)  </td>
+                <td> @Html.TextBoxFor(model => model.UnitPrice)  </td>
+            </tr>
+            <tr>
+                <td width="10%"> @Html.DisplayNameFor(model => model.UnitsInStock)  </td>
+                <td> @Html.TextBoxFor(model => model.UnitsInStock)  </td>
+            </tr>
+            <tr>
+                <td width="10%"> @Html.DisplayNameFor(model => model.UnitsOnOrder)  </td>
+                <td> @Html.TextBoxFor(model => model.UnitsOnOrder)  </td>
+            </tr>
+            <tr>
+                <td width="10%"> @Html.DisplayNameFor(model => model.ReorderLevel)  </td>
+                <td> @Html.TextBoxFor(model => model.ReorderLevel)  </td>
+            </tr>
+            <tr>
+                <td width="10%"> @Html.DisplayNameFor(model => model.Discontinued)  </td>
+                <td> @Html.TextBoxFor(model => model.Discontinued)  </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

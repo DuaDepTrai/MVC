@@ -1,0 +1,40 @@
+﻿
+@{
+    
+
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h1>Đây là View của Methord Index trong COntroller Home</h1>
+    </div>
+    @Html.ActionLink("About", "About", "Home")
+    @Html.ActionLink("Contact", "Contact", "Home")
+    <table border="1" width="100%">
+        <tr>
+            <td width="10%">STT</td>
+            <td>Họ và tên</td>
+        </tr>
+        @{
+            var i = 0;
+            foreach (var item in ViewBag.ListStudent)
+            {
+                i++;
+                <tr>
+                    <td width="10%">@i</td>
+                    <td>@item</td>
+                </tr>
+            }
+        }
+
+    </table>
+</body>
+</html>

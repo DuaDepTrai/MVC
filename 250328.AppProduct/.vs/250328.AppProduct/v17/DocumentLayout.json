@@ -1,0 +1,139 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\250328.AppProduct\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{46BFC676-28BB-4E25-8865-6A5678791B20}|250328.AppProduct\\250328.AppProduct.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\250328.appproduct\\250328.appproduct\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46BFC676-28BB-4E25-8865-6A5678791B20}|250328.AppProduct\\250328.AppProduct.csproj|solutionrelative:250328.appproduct\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46BFC676-28BB-4E25-8865-6A5678791B20}|250328.AppProduct\\250328.AppProduct.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\250328.appproduct\\250328.appproduct\\views\\users\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{46BFC676-28BB-4E25-8865-6A5678791B20}|250328.AppProduct\\250328.AppProduct.csproj|solutionrelative:250328.appproduct\\views\\users\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46BFC676-28BB-4E25-8865-6A5678791B20}|250328.AppProduct\\250328.AppProduct.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\250328.appproduct\\250328.appproduct\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46BFC676-28BB-4E25-8865-6A5678791B20}|250328.AppProduct\\250328.AppProduct.csproj|solutionrelative:250328.appproduct\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46BFC676-28BB-4E25-8865-6A5678791B20}|250328.AppProduct\\250328.AppProduct.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\250328.appproduct\\250328.appproduct\\views\\products\\update.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{46BFC676-28BB-4E25-8865-6A5678791B20}|250328.AppProduct\\250328.AppProduct.csproj|solutionrelative:250328.appproduct\\views\\products\\update.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46BFC676-28BB-4E25-8865-6A5678791B20}|250328.AppProduct\\250328.AppProduct.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\250328.appproduct\\250328.appproduct\\views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{46BFC676-28BB-4E25-8865-6A5678791B20}|250328.AppProduct\\250328.AppProduct.csproj|solutionrelative:250328.appproduct\\views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46BFC676-28BB-4E25-8865-6A5678791B20}|250328.AppProduct\\250328.AppProduct.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\250328.appproduct\\250328.appproduct\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46BFC676-28BB-4E25-8865-6A5678791B20}|250328.AppProduct\\250328.AppProduct.csproj|solutionrelative:250328.appproduct\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46BFC676-28BB-4E25-8865-6A5678791B20}|250328.AppProduct\\250328.AppProduct.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\250328.appproduct\\250328.appproduct\\models\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46BFC676-28BB-4E25-8865-6A5678791B20}|250328.AppProduct\\250328.AppProduct.csproj|solutionrelative:250328.appproduct\\models\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\250328.AppProduct\\250328.AppProduct\\Views\\Users\\Login.cshtml",
+              "RelativeDocumentMoniker": "250328.AppProduct\\Views\\Users\\Login.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\250328.AppProduct\\250328.AppProduct\\Views\\Users\\Login.cshtml",
+              "RelativeToolTip": "250328.AppProduct\\Views\\Users\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-30T17:28:13.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\250328.AppProduct\\250328.AppProduct\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "250328.AppProduct\\Controllers\\UsersController.cs",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\250328.AppProduct\\250328.AppProduct\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "250328.AppProduct\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAArwCIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T17:27:23.085Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Users.cs",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\250328.AppProduct\\250328.AppProduct\\Models\\Users.cs",
+              "RelativeDocumentMoniker": "250328.AppProduct\\Models\\Users.cs",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\250328.AppProduct\\250328.AppProduct\\Models\\Users.cs",
+              "RelativeToolTip": "250328.AppProduct\\Models\\Users.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T17:26:49.971Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Update.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\250328.AppProduct\\250328.AppProduct\\Views\\Products\\Update.cshtml",
+              "RelativeDocumentMoniker": "250328.AppProduct\\Views\\Products\\Update.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\250328.AppProduct\\250328.AppProduct\\Views\\Products\\Update.cshtml",
+              "RelativeToolTip": "250328.AppProduct\\Views\\Products\\Update.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACMAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-30T16:13:29.107Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\250328.AppProduct\\250328.AppProduct\\Views\\Products\\Index.cshtml",
+              "RelativeDocumentMoniker": "250328.AppProduct\\Views\\Products\\Index.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\250328.AppProduct\\250328.AppProduct\\Views\\Products\\Index.cshtml",
+              "RelativeToolTip": "250328.AppProduct\\Views\\Products\\Index.cshtml",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAE8AAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-30T15:24:56.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\250328.AppProduct\\250328.AppProduct\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "250328.AppProduct\\Controllers\\ProductsController.cs",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\250328.AppProduct\\250328.AppProduct\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "250328.AppProduct\\Controllers\\ProductsController.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAgwDUAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T15:15:54.727Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Products.cs",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\250328.AppProduct\\250328.AppProduct\\Models\\Products.cs",
+              "RelativeDocumentMoniker": "250328.AppProduct\\Models\\Products.cs",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\250328.AppProduct\\250328.AppProduct\\Models\\Products.cs",
+              "RelativeToolTip": "250328.AppProduct\\Models\\Products.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T15:08:43.948Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
