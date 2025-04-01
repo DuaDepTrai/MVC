@@ -11,7 +11,7 @@ namespace App.Controllers
 {
     public class RegionController : Controller
     {
-        string strcnn = "Server=DESKTOP-J4J36M0\\SQLEXPRESS;Database=Northwind;Integrated Security=True;";
+        string strcnn = "Server=DESKTOP-A5P4OVC\\SQLEXPRESS;Database=Northwind;Integrated Security=True;";
         static int ID = 0;
         static List<Region> regions = new List<Region>();
         // GET: Region
