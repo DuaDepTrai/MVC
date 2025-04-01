@@ -11,7 +11,15 @@ namespace _250324.App6.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return Content("Dua Dep Trai");
+            ViewBag.Now=DateTime.Now;
+            return View("~/Views/Home/nextView.cshtml");
+        }
+
+        public ActionResult Hello(string name)
+        {
+            ViewData["name"] = name;
+            ViewData["now"] = DateTime.Now;
+            return View();
         }
 
         public ActionResult Ex1(string name)
@@ -69,7 +77,7 @@ namespace _250324.App6.Controllers
 
         public ActionResult Ex4(string s)
         {
-            if (s.Equals("a") || s.Equals("e") || s.Equals("i") || s.Equals("o") || s.Equals("or") || s.Equals("u"))
+            if (s.ToLower().Equals("a") || s.ToLower().Equals("e") || s.ToLower().Equals("i") || s.ToLower().Equals("o") || s.ToLower().Equals("or") || s.ToLower().Equals("u"))
             {
                 return Content("This is a Vowel");
             }

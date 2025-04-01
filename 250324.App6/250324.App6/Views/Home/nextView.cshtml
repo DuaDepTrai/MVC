@@ -1,0 +1,41 @@
+﻿
+@{
+    var listBranches = new String[] { "Apple", "Samsung", "Dell", "Intel", "AMD" };
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>nextView</title>
+</head>
+<body>
+    <div>
+        @Html.Partial("Header")
+        <h2>This is an other view</h2>
+        <h2>Now: @ViewBag.Now</h2>
+
+        @Html.ActionLink("Hello", "Hello", "Home")
+
+        <table border="1" width="100%">
+            <tr>
+                <td width="10%">No</td>
+                <td width="30%">Branch</td>
+            </tr>
+            @{ 
+                var i = 0;
+                foreach (var item in listBranches)
+                {
+                    i++;
+                    <tr>
+                        <td width="10%">@i</td>
+                        <td width="30%">@item</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</body>
+</html>

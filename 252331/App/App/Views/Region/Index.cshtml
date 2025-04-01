@@ -1,0 +1,41 @@
+﻿@model IEnumerable<App.Models.Region>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RegionDescription)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegionDescription)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.RegionID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.RegionID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.RegionID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

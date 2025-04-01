@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SendMail</title>
+</head>
+<body>
+    <div> 
+        @using (Html.BeginForm())
+        {
+            <table width="70%" border="1">
+                <tr>
+                    <td colspan="2">Send mail</td>
+                </tr>
+                <tr>
+                    <td width="30%">Mail to: </td>
+                    <td>@Html.TextBox("txtTo")</td>
+                </tr>
+                <tr>
+                    <td width="30%">Subject: </td>
+                    <td>@Html.TextBox("txtSub")</td>
+                </tr>
+                <tr>
+                    <td width="30%">Content: </td>
+                    <td>@Html.TextArea("txtContent")</td>
+                </tr>
+                <tr>
+                    <td width="30%">Combobox: </td>
+                    <td>@Html.DropDownList("myList", new SelectList(new String[] { "Option 1", "Option 2", "Option 3" }))</td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Send"/>
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+</body>
+</html>
