@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace Homework.Controllers
 {
     public class ShippersController : Controller
     {
-        static string strcnn = "Server=DESKTOP-A5P4OVC\\SQLEXPRESS;Database=Northwind;Integrated Security=True;";
+        //static string strcnn = "Server=DESKTOP-A5P4OVC\\SQLEXPRESS;Database=Northwind;Integrated Security=True;";
+        string strcnn = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
         static List<Shippers> shippers = new List<Shippers>();
         // GET: Shippers
         public ActionResult Index()
