@@ -1,8 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\APTECH - IT\\MVC\\252331\\App\\",
+  "WorkspaceRootPath": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\",
   "Documents": [
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{1A0C5DAA-AF80-4F87-AC1B-B142CB006792}|App\\App.csproj|E:\\APTECH - IT\\MVC\\252331\\App\\app\\controllers\\regioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A0C5DAA-AF80-4F87-AC1B-B142CB006792}|App\\App.csproj|solutionrelative:app\\controllers\\regioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -28,6 +29,33 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{1A0C5DAA-AF80-4F87-AC1B-B142CB006792}|App\\App.csproj|E:\\APTECH - IT\\MVC\\252331\\App\\app\\models\\region.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+=======
+      "AbsoluteMoniker": "D:0:0:{1A0C5DAA-AF80-4F87-AC1B-B142CB006792}|App\\App.csproj|G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\app\\controllers\\regioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A0C5DAA-AF80-4F87-AC1B-B142CB006792}|App\\App.csproj|solutionrelative:app\\controllers\\regioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A0C5DAA-AF80-4F87-AC1B-B142CB006792}|App\\App.csproj|G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\app\\views\\region\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1A0C5DAA-AF80-4F87-AC1B-B142CB006792}|App\\App.csproj|solutionrelative:app\\views\\region\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A0C5DAA-AF80-4F87-AC1B-B142CB006792}|App\\App.csproj|G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\app\\views\\region\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1A0C5DAA-AF80-4F87-AC1B-B142CB006792}|App\\App.csproj|solutionrelative:app\\views\\region\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A0C5DAA-AF80-4F87-AC1B-B142CB006792}|App\\App.csproj|G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\app\\views\\region\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1A0C5DAA-AF80-4F87-AC1B-B142CB006792}|App\\App.csproj|solutionrelative:app\\views\\region\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A0C5DAA-AF80-4F87-AC1B-B142CB006792}|App\\App.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\252331\\app\\app\\views\\region\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1A0C5DAA-AF80-4F87-AC1B-B142CB006792}|App\\App.csproj|solutionrelative:app\\views\\region\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A0C5DAA-AF80-4F87-AC1B-B142CB006792}|App\\App.csproj|G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\app\\views\\region\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1A0C5DAA-AF80-4F87-AC1B-B142CB006792}|App\\App.csproj|solutionrelative:app\\views\\region\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A0C5DAA-AF80-4F87-AC1B-B142CB006792}|App\\App.csproj|G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\app\\models\\region.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+>>>>>>> 78d60b380a09185670b5564f8e79382a1b9cc93f
       "RelativeMoniker": "D:0:0:{1A0C5DAA-AF80-4F87-AC1B-B142CB006792}|App\\App.csproj|solutionrelative:app\\models\\region.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -42,11 +70,15 @@
           "Children": [
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 3,
+=======
+              "DocumentIndex": 4,
+>>>>>>> 78d60b380a09185670b5564f8e79382a1b9cc93f
               "Title": "Delete.cshtml",
-              "DocumentMoniker": "E:\\APTECH - IT\\MVC\\252331\\App\\App\\Views\\Region\\Delete.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\App\\Views\\Region\\Delete.cshtml",
               "RelativeDocumentMoniker": "App\\Views\\Region\\Delete.cshtml",
-              "ToolTip": "E:\\APTECH - IT\\MVC\\252331\\App\\App\\Views\\Region\\Delete.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\App\\Views\\Region\\Delete.cshtml",
               "RelativeToolTip": "App\\Views\\Region\\Delete.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -57,9 +89,9 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Details.cshtml",
-              "DocumentMoniker": "E:\\APTECH - IT\\MVC\\252331\\App\\App\\Views\\Region\\Details.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\App\\Views\\Region\\Details.cshtml",
               "RelativeDocumentMoniker": "App\\Views\\Region\\Details.cshtml",
-              "ToolTip": "E:\\APTECH - IT\\MVC\\252331\\App\\App\\Views\\Region\\Details.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\App\\Views\\Region\\Details.cshtml",
               "RelativeToolTip": "App\\Views\\Region\\Details.cshtml",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -70,11 +102,11 @@
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Create.cshtml",
-              "DocumentMoniker": "E:\\APTECH - IT\\MVC\\252331\\App\\App\\Views\\Region\\Create.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\App\\Views\\Region\\Create.cshtml",
               "RelativeDocumentMoniker": "App\\Views\\Region\\Create.cshtml",
-              "ToolTip": "E:\\APTECH - IT\\MVC\\252331\\App\\App\\Views\\Region\\Create.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\App\\Views\\Region\\Create.cshtml",
               "RelativeToolTip": "App\\Views\\Region\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-01T00:16:09.839Z"
             },
@@ -82,9 +114,9 @@
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Edit.cshtml",
-              "DocumentMoniker": "E:\\APTECH - IT\\MVC\\252331\\App\\App\\Views\\Region\\Edit.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\App\\Views\\Region\\Edit.cshtml",
               "RelativeDocumentMoniker": "App\\Views\\Region\\Edit.cshtml",
-              "ToolTip": "E:\\APTECH - IT\\MVC\\252331\\App\\App\\Views\\Region\\Edit.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\App\\Views\\Region\\Edit.cshtml",
               "RelativeToolTip": "App\\Views\\Region\\Edit.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -94,11 +126,11 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\APTECH - IT\\MVC\\252331\\App\\App\\Views\\Region\\Index.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\App\\Views\\Region\\Index.cshtml",
               "RelativeDocumentMoniker": "App\\Views\\Region\\Index.cshtml",
-              "ToolTip": "E:\\APTECH - IT\\MVC\\252331\\App\\App\\Views\\Region\\Index.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\App\\Views\\Region\\Index.cshtml",
               "RelativeToolTip": "App\\Views\\Region\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-03-31T23:22:12.625Z",
               "EditorCaption": ""
@@ -107,11 +139,15 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "RegionController.cs",
-              "DocumentMoniker": "E:\\APTECH - IT\\MVC\\252331\\App\\App\\Controllers\\RegionController.cs",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\App\\Controllers\\RegionController.cs",
               "RelativeDocumentMoniker": "App\\Controllers\\RegionController.cs",
-              "ToolTip": "E:\\APTECH - IT\\MVC\\252331\\App\\App\\Controllers\\RegionController.cs",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\App\\Controllers\\RegionController.cs",
               "RelativeToolTip": "App\\Controllers\\RegionController.cs",
+<<<<<<< HEAD
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAMEAAAARAAAAAAAAAA==",
+=======
+              "ViewState": "AgIAAKcAAAAAAAAAAAAuwLwAAAAAAAAAAAAAAA==",
+>>>>>>> 78d60b380a09185670b5564f8e79382a1b9cc93f
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-31T23:19:25.048Z",
               "EditorCaption": ""
@@ -120,9 +156,9 @@
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "Region.cs",
-              "DocumentMoniker": "E:\\APTECH - IT\\MVC\\252331\\App\\App\\Models\\Region.cs",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\App\\Models\\Region.cs",
               "RelativeDocumentMoniker": "App\\Models\\Region.cs",
-              "ToolTip": "E:\\APTECH - IT\\MVC\\252331\\App\\App\\Models\\Region.cs",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\App\\App\\Models\\Region.cs",
               "RelativeToolTip": "App\\Models\\Region.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
