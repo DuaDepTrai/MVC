@@ -7,12 +7,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Homework.Models;
+using System.Configuration;
 
 namespace Homework.Controllers
 {
     public class CustomersController : Controller
     {
-        string strcnn = "Server=DESKTOP-A5P4OVC\\SQLEXPRESS;Database=Northwind;Integrated Security=True;";
+        //string strcnn = "Server=DESKTOP-J4J36M0\\SQLEXPRESS;Database=Northwind;Integrated Security=True;";
+        string strcnn = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
         static List<Customers> customers = new List<Customers>();
         // GET: Customers
         public ActionResult Index()
