@@ -32,6 +32,8 @@ namespace App.Controllers
                 region.RegionDescription = item["RegionDescription"].ToString();
                 regions.Add(region);
             }
+            regions.Clear();
+
             return View(regions);
         }
 
@@ -49,6 +51,8 @@ namespace App.Controllers
                 region.RegionID = (int)dt.Rows[0]["RegionID"];
                 region.RegionDescription = dt.Rows[0]["RegionDescription"].ToString();
             }
+            regions.Clear();
+
             return View(region);
         }
 
@@ -112,6 +116,7 @@ namespace App.Controllers
                 region.RegionID = (int)dt.Rows[0]["RegionID"];
                 region.RegionDescription = dt.Rows[0]["RegionDescription"].ToString();
             }
+            regions.Clear();
 
             return View(region);
         }
@@ -161,6 +166,8 @@ namespace App.Controllers
                 region.RegionID = (int)dt.Rows[0]["RegionID"];
                 region.RegionDescription = dt.Rows[0]["RegionDescription"].ToString();
             }
+            regions.Clear();
+
             return View(region);
         }
 
