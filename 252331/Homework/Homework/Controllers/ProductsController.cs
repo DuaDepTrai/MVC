@@ -34,14 +34,13 @@ namespace Homework.Controllers
                 product.SupplierID = int.Parse(item["SupplierID"].ToString());
                 product.CategoryID = int.Parse(item["CategoryID"].ToString());
                 product.QuantityPerUnit = item["QuantityPerUnit"].ToString();
-                product.UnitPrice = int.Parse(item["UnitPrice"].ToString());
+                product.UnitPrice = float.Parse(item["UnitPrice"].ToString());
                 product.UnitsInStock = int.Parse(item["UnitsInStock"].ToString());
                 product.UnitsOnOrder = int.Parse(item["UnitsOnOrder"].ToString());
                 product.ReorderLevel = int.Parse(item["ReorderLevel"].ToString());
-                product.Discontinued = bool.Parse(item["ProductName"].ToString());
+                product.Discontinued = (bool)item["Discontinued"];
                 products.Add(product);
             }
-            products.Clear();
 
             return View(products);
         }
@@ -62,7 +61,7 @@ namespace Homework.Controllers
                 product.SupplierID = (int)dt.Rows[0]["SupplierID"];
                 product.CategoryID = (int)dt.Rows[0]["CategoryID"];
                 product.QuantityPerUnit = dt.Rows[0]["QuantityPerUnit"].ToString();
-                product.UnitPrice = (int)dt.Rows[0]["UnitPrice"];
+                product.UnitPrice = (float)dt.Rows[0]["UnitPrice"];
                 product.UnitsInStock = (int)dt.Rows[0]["UnitsInStock"];
                 product.UnitsOnOrder = (int)dt.Rows[0]["UnitsOnOrder"];
                 product.ReorderLevel = (int)dt.Rows[0]["ReorderLevel"];
@@ -136,7 +135,7 @@ namespace Homework.Controllers
                 product.SupplierID = (int)dt.Rows[0]["SupplierID"];
                 product.CategoryID = (int)dt.Rows[0]["CategoryID"];
                 product.QuantityPerUnit = dt.Rows[0]["QuantityPerUnit"].ToString();
-                product.UnitPrice = (int)dt.Rows[0]["UnitPrice"];
+                product.UnitPrice = (float)dt.Rows[0]["UnitPrice"];
                 product.UnitsInStock = (int)dt.Rows[0]["UnitsInStock"];
                 product.UnitsOnOrder = (int)dt.Rows[0]["UnitsOnOrder"];
                 product.ReorderLevel = (int)dt.Rows[0]["ReorderLevel"];
@@ -203,7 +202,7 @@ namespace Homework.Controllers
                 product.SupplierID = (int)dt.Rows[0]["SupplierID"];
                 product.CategoryID = (int)dt.Rows[0]["CategoryID"];
                 product.QuantityPerUnit = dt.Rows[0]["QuantityPerUnit"].ToString();
-                product.UnitPrice = (int)dt.Rows[0]["UnitPrice"];
+                product.UnitPrice = (float)dt.Rows[0]["UnitPrice"];
                 product.UnitsInStock = (int)dt.Rows[0]["UnitsInStock"];
                 product.UnitsOnOrder = (int)dt.Rows[0]["UnitsOnOrder"];
                 product.ReorderLevel = (int)dt.Rows[0]["ReorderLevel"];
