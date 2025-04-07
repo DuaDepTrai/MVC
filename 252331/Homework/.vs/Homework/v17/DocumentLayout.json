@@ -1,30 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\APTECH - IT\\MVC\\252331\\Homework\\",
+  "WorkspaceRootPath": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|e:\\aptech - it\\mvc\\252331\\homework\\homework\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\252331\\homework\\homework\\views\\suppliers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\views\\suppliers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|e:\\aptech - it\\mvc\\252331\\homework\\homework\\models\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\models\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\252331\\homework\\homework\\views\\territories\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\views\\territories\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|E:\\APTECH - IT\\MVC\\252331\\Homework\\homework\\controllers\\supplierscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\controllers\\supplierscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\252331\\homework\\homework\\views\\region\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\views\\region\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|E:\\APTECH - IT\\MVC\\252331\\Homework\\homework\\controllers\\regioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\controllers\\regioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\252331\\homework\\homework\\views\\customers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\views\\customers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|E:\\APTECH - IT\\MVC\\252331\\Homework\\homework\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\252331\\homework\\homework\\views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|E:\\APTECH - IT\\MVC\\252331\\Homework\\homework\\controllers\\shipperscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\controllers\\shipperscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\252331\\homework\\homework\\views\\shippers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\views\\shippers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\252331\\homework\\homework\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,93 +38,98 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Homework\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Homework\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-07T18:06:27.14Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Products.cs",
-              "DocumentMoniker": "E:\\APTECH - IT\\MVC\\252331\\Homework\\Homework\\Models\\Products.cs",
-              "RelativeDocumentMoniker": "Homework\\Models\\Products.cs",
-              "ToolTip": "E:\\APTECH - IT\\MVC\\252331\\Homework\\Homework\\Models\\Products.cs",
-              "RelativeToolTip": "Homework\\Models\\Products.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T14:25:10.979Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Territories\\Index.cshtml",
+              "RelativeDocumentMoniker": "Homework\\Views\\Territories\\Index.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Territories\\Index.cshtml",
+              "RelativeToolTip": "Homework\\Views\\Territories\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-07T18:02:56.999Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ProductsController.cs",
-              "DocumentMoniker": "E:\\APTECH - IT\\MVC\\252331\\Homework\\Homework\\Controllers\\ProductsController.cs",
-              "RelativeDocumentMoniker": "Homework\\Controllers\\ProductsController.cs",
-              "ToolTip": "E:\\APTECH - IT\\MVC\\252331\\Homework\\Homework\\Controllers\\ProductsController.cs",
-              "RelativeToolTip": "Homework\\Controllers\\ProductsController.cs",
-              "ViewState": "AgIAAHgAAAAAAAAAAAArwIgAAABTAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T13:37:20.311Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Suppliers\\Index.cshtml",
+              "RelativeDocumentMoniker": "Homework\\Views\\Suppliers\\Index.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Suppliers\\Index.cshtml",
+              "RelativeToolTip": "Homework\\Views\\Suppliers\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-07T18:02:55.841Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Shippers\\Index.cshtml",
+              "RelativeDocumentMoniker": "Homework\\Views\\Shippers\\Index.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Shippers\\Index.cshtml",
+              "RelativeToolTip": "Homework\\Views\\Shippers\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-07T18:02:53.683Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Products\\Index.cshtml",
+              "RelativeDocumentMoniker": "Homework\\Views\\Products\\Index.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Products\\Index.cshtml",
+              "RelativeToolTip": "Homework\\Views\\Products\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-07T18:02:50.375Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "RegionController.cs",
-              "DocumentMoniker": "E:\\APTECH - IT\\MVC\\252331\\Homework\\Homework\\Controllers\\RegionController.cs",
-              "RelativeDocumentMoniker": "Homework\\Controllers\\RegionController.cs",
-              "ToolTip": "E:\\APTECH - IT\\MVC\\252331\\Homework\\Homework\\Controllers\\RegionController.cs",
-              "RelativeToolTip": "Homework\\Controllers\\RegionController.cs",
-              "ViewState": "AgIAAHwAAAAAAAAAAAAcwJUAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T13:27:51.979Z"
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Customers\\Index.cshtml",
+              "RelativeDocumentMoniker": "Homework\\Views\\Customers\\Index.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Customers\\Index.cshtml",
+              "RelativeToolTip": "Homework\\Views\\Customers\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAIwBgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-07T18:02:47.708Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "SuppliersController.cs",
-              "DocumentMoniker": "E:\\APTECH - IT\\MVC\\252331\\Homework\\Homework\\Controllers\\SuppliersController.cs",
-              "RelativeDocumentMoniker": "Homework\\Controllers\\SuppliersController.cs",
-              "ToolTip": "E:\\APTECH - IT\\MVC\\252331\\Homework\\Homework\\Controllers\\SuppliersController.cs",
-              "RelativeToolTip": "Homework\\Controllers\\SuppliersController.cs",
-              "ViewState": "AgIAAOEAAAAAAAAAAAAgwPkAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T12:43:45.027Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CustomersController.cs",
-              "DocumentMoniker": "E:\\APTECH - IT\\MVC\\252331\\Homework\\Homework\\Controllers\\CustomersController.cs",
-              "RelativeDocumentMoniker": "Homework\\Controllers\\CustomersController.cs",
-              "ToolTip": "E:\\APTECH - IT\\MVC\\252331\\Homework\\Homework\\Controllers\\CustomersController.cs",
-              "RelativeToolTip": "Homework\\Controllers\\CustomersController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAPIAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T16:06:48.415Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ShippersController.cs",
-              "DocumentMoniker": "E:\\APTECH - IT\\MVC\\252331\\Homework\\Homework\\Controllers\\ShippersController.cs",
-              "RelativeDocumentMoniker": "Homework\\Controllers\\ShippersController.cs",
-              "ToolTip": "E:\\APTECH - IT\\MVC\\252331\\Homework\\Homework\\Controllers\\ShippersController.cs",
-              "RelativeToolTip": "Homework\\Controllers\\ShippersController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T16:48:35.915Z"
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Region\\Index.cshtml",
+              "RelativeDocumentMoniker": "Homework\\Views\\Region\\Index.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Region\\Index.cshtml",
+              "RelativeToolTip": "Homework\\Views\\Region\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-07T17:29:11.139Z",
+              "EditorCaption": ""
             }
           ]
         }

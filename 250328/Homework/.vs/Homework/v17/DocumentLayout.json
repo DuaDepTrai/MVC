@@ -96,9 +96,10 @@
               "RelativeDocumentMoniker": "Homework\\Views\\Customers\\Index.cshtml",
               "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\250328\\Homework\\Homework\\Views\\Customers\\Index.cshtml",
               "RelativeToolTip": "Homework\\Views\\Customers\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFQAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-30T17:47:48.158Z"
+              "WhenOpened": "2025-03-30T17:47:48.158Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -108,7 +109,7 @@
               "RelativeDocumentMoniker": "Homework\\Controllers\\CustomersController.cs",
               "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\250328\\Homework\\Homework\\Controllers\\CustomersController.cs",
               "RelativeToolTip": "Homework\\Controllers\\CustomersController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-30T16:35:30.763Z",
               "EditorCaption": ""

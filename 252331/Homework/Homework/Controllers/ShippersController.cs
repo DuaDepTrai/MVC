@@ -7,6 +7,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Homework.Models;
+using System.Data.SqlClient;
+using System.Data;
+using System.Drawing;
 
 namespace Homework.Controllers
 {
@@ -24,6 +27,8 @@ namespace Homework.Controllers
             string Sql = "SELECT * FROM Shippers";
             da = new SqlDataAdapter(Sql, conn);
             da.Fill(ds, "Shippers");
+
+            shippers.Clear();
 
             foreach (DataRow item in ds.Tables[0].Rows) 
             {

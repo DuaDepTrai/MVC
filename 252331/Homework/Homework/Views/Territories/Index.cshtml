@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Homework.Models.Shippers>
+﻿@model IEnumerable<Homework.Models.Territories>
 
 
 @{
@@ -25,7 +25,7 @@
 </head>
 <body>
     @{
-        ViewBag.Title = "Shippers";
+        ViewBag.Title = "Territories";
     }
     <p>
         @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
@@ -33,13 +33,13 @@
     <table class="table table-striped">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ShipperID)
+                @Html.DisplayNameFor(model => model.TerritoryID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CompanyName)
+                @Html.DisplayNameFor(model => model.TerritoryDescription)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Phone)
+                @Html.DisplayNameFor(model => model.RegionID)
             </th>
             <th></th>
         </tr>
@@ -48,18 +48,18 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ShipperID)
+                    @Html.DisplayFor(modelItem => item.TerritoryID)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CompanyName)
+                    @Html.DisplayFor(modelItem => item.TerritoryDescription)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Phone)
+                    @Html.DisplayFor(modelItem => item.RegionID)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ShipperID }, new { @class = "btn btn-warning btn-sm" })
-                    @Html.ActionLink("Details", "Details", new { id = item.ShipperID }, new { @class = "btn btn-info btn-sm" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ShipperID }, new { @class = "btn btn-danger btn-sm" })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TerritoryID }, new { @class = "btn btn-warning btn-sm" })
+                    @Html.ActionLink("Details", "Details", new { id = item.TerritoryID }, new { @class = "btn btn-info btn-sm" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TerritoryID }, new { @class = "btn btn-danger btn-sm" })
                 </td>
             </tr>
         }

@@ -34,11 +34,11 @@ namespace Homework.Controllers
                 product.SupplierID = int.Parse(item["SupplierID"].ToString());
                 product.CategoryID = int.Parse(item["CategoryID"].ToString());
                 product.QuantityPerUnit = item["QuantityPerUnit"].ToString();
-                product.UnitPrice = float.Parse(item["UnitPrice"].ToString());
-                product.UnitsInStock = int.Parse(item["UnitsInStock"].ToString());
-                product.UnitsOnOrder = int.Parse(item["UnitsOnOrder"].ToString());
-                product.ReorderLevel = int.Parse(item["ReorderLevel"].ToString());
-                product.Discontinued = (bool)item["Discontinued"];
+                product.UnitPrice = decimal.Parse(item["UnitPrice"].ToString());
+                product.UnitsInStock = short.Parse(item["UnitsInStock"].ToString());
+                product.UnitsOnOrder = short.Parse(item["UnitsOnOrder"].ToString());
+                product.ReorderLevel = short.Parse(item["ReorderLevel"].ToString());
+                product.Discontinued = Convert.ToBoolean(item["Discontinued"]);
                 products.Add(product);
             }
 
@@ -61,15 +61,15 @@ namespace Homework.Controllers
                 product.SupplierID = (int)dt.Rows[0]["SupplierID"];
                 product.CategoryID = (int)dt.Rows[0]["CategoryID"];
                 product.QuantityPerUnit = dt.Rows[0]["QuantityPerUnit"].ToString();
-                product.UnitPrice = (float)dt.Rows[0]["UnitPrice"];
-                product.UnitsInStock = (int)dt.Rows[0]["UnitsInStock"];
-                product.UnitsOnOrder = (int)dt.Rows[0]["UnitsOnOrder"];
-                product.ReorderLevel = (int)dt.Rows[0]["ReorderLevel"];
+                product.UnitPrice = (decimal)dt.Rows[0]["UnitPrice"];
+                product.UnitsInStock = (short)dt.Rows[0]["UnitsInStock"];
+                product.UnitsOnOrder = (short)dt.Rows[0]["UnitsOnOrder"];
+                product.ReorderLevel = (short)dt.Rows[0]["ReorderLevel"];
                 product.Discontinued = (bool)dt.Rows[0]["Discontinued"];
             }
             products.Clear();
 
-            return View(products);
+            return View(product);
         }
 
         // GET: Products/Create
@@ -92,11 +92,11 @@ namespace Homework.Controllers
                         ""+ obj.SupplierID +", " +
                         ""+ obj.CategoryID +", " +
                         "N'"+ obj.QuantityPerUnit +"', " +
-                        ""+ obj.UnitPrice +", " +
+                        ""+ obj.UnitPrice.ToString(System.Globalization.CultureInfo.InvariantCulture) +", " +
                         ""+ obj.UnitsInStock +", " +
                         ""+ obj.UnitsOnOrder +", " +
                         ""+ obj.ReorderLevel +", " +
-                        ""+ obj.Discontinued +")";
+                        ""+ (obj.Discontinued ? 1 : 0) +")";
                     SqlConnection conn = new SqlConnection(strcnn);
 
                     if (conn.State == ConnectionState.Closed)
@@ -113,8 +113,9 @@ namespace Homework.Controllers
                 products.Clear();
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
+                ViewBag.Error = ex.Message;
                 return View();
             }
         }
@@ -135,10 +136,10 @@ namespace Homework.Controllers
                 product.SupplierID = (int)dt.Rows[0]["SupplierID"];
                 product.CategoryID = (int)dt.Rows[0]["CategoryID"];
                 product.QuantityPerUnit = dt.Rows[0]["QuantityPerUnit"].ToString();
-                product.UnitPrice = (float)dt.Rows[0]["UnitPrice"];
-                product.UnitsInStock = (int)dt.Rows[0]["UnitsInStock"];
-                product.UnitsOnOrder = (int)dt.Rows[0]["UnitsOnOrder"];
-                product.ReorderLevel = (int)dt.Rows[0]["ReorderLevel"];
+                product.UnitPrice = (decimal)dt.Rows[0]["UnitPrice"];
+                product.UnitsInStock = (short)dt.Rows[0]["UnitsInStock"];
+                product.UnitsOnOrder = (short)dt.Rows[0]["UnitsOnOrder"];
+                product.ReorderLevel = (short)dt.Rows[0]["ReorderLevel"];
                 product.Discontinued = (bool)dt.Rows[0]["Discontinued"];
             }
             products.Clear();
@@ -159,11 +160,11 @@ namespace Homework.Controllers
                         "SupplierID=" + obj.SupplierID + ", " +
                         "CategoryID=" + obj.CategoryID + ", " +
                         "QuantityPerUnit=N'" + obj.QuantityPerUnit + "', " +
-                        "UnitPrice=" + obj.UnitPrice + ", " +
+                        "UnitPrice=" + obj.UnitPrice.ToString(System.Globalization.CultureInfo.InvariantCulture) + ", " +
                         "UnitsInStock=" + obj.UnitsInStock + ", " +
                         "UnitsOnOrder=" + obj.UnitsOnOrder + ", " +
                         "ReorderLevel=" + obj.ReorderLevel + ", " +
-                        "Discontinued=" + obj.Discontinued + 
+                        "Discontinued=" + (obj.Discontinued ? 1 : 0) + 
                         " WHERE ProductID=" + id;
                     SqlConnection conn = new SqlConnection(strcnn);
                     if (conn.State == ConnectionState.Closed)
@@ -180,8 +181,9 @@ namespace Homework.Controllers
                 products.Clear();
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
+                ViewBag.Error = ex.Message;
                 return View();
             }
         }
@@ -202,10 +204,10 @@ namespace Homework.Controllers
                 product.SupplierID = (int)dt.Rows[0]["SupplierID"];
                 product.CategoryID = (int)dt.Rows[0]["CategoryID"];
                 product.QuantityPerUnit = dt.Rows[0]["QuantityPerUnit"].ToString();
-                product.UnitPrice = (float)dt.Rows[0]["UnitPrice"];
-                product.UnitsInStock = (int)dt.Rows[0]["UnitsInStock"];
-                product.UnitsOnOrder = (int)dt.Rows[0]["UnitsOnOrder"];
-                product.ReorderLevel = (int)dt.Rows[0]["ReorderLevel"];
+                product.UnitPrice = (decimal)dt.Rows[0]["UnitPrice"];
+                product.UnitsInStock = (short)dt.Rows[0]["UnitsInStock"];
+                product.UnitsOnOrder = (short)dt.Rows[0]["UnitsOnOrder"];
+                product.ReorderLevel = (short)dt.Rows[0]["ReorderLevel"];
                 product.Discontinued = (bool)dt.Rows[0]["Discontinued"];
             }
             products.Clear();

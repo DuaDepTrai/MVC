@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using Homework.Models;
 using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace Homework.Controllers
 {

@@ -1,7 +1,7 @@
-﻿@model IEnumerable<App.Models.Region>
+﻿@model IEnumerable<Homework.Models.Region>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -10,33 +10,43 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <style>
+        table {
+            table-layout: auto;
+            width: 100%;
+        }
+
+        td, th {
+            word-wrap: break-word; /* Tự xuống dòng khi nội dung quá dài */
+            white-space: normal; /* Đảm bảo có thể xuống dòng */
+        }
+    </style>
 </head>
 <body>
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
     </p>
-    <table class="table">
+    <table class="table table-striped">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.RegionDescription)
             </th>
             <th></th>
         </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RegionDescription)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.RegionID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.RegionID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.RegionID })
-                </td>
-            </tr>
-        }
-
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegionDescription)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.RegionID }, new { @class = "btn btn-warning btn-sm" })
+                @Html.ActionLink("Details", "Details", new { id=item.RegionID }, new { @class = "btn btn-info btn-sm" })
+                @Html.ActionLink("Delete", "Delete", new { id=item.RegionID }, new { @class = "btn btn-danger btn-sm" })
+            </td>
+        </tr>
+    }
+    
     </table>
 </body>
 </html>
