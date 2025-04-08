@@ -3,16 +3,32 @@
   "WorkspaceRootPath": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\252331\\homework\\homework\\controllers\\regioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\controllers\\regioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\252331\\homework\\homework\\views\\users\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\views\\users\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\252331\\homework\\homework\\views\\region\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\views\\region\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\252331\\homework\\homework\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\252331\\homework\\homework\\models\\region.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\models\\region.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\252331\\homework\\homework\\views\\users\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\views\\users\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\252331\\homework\\homework\\views\\users\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\views\\users\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\252331\\homework\\homework\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\252331\\homework\\homework\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|g:\\it-aptech\\bai-tap-code\\mvc\\252331\\homework\\homework\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +38,97 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Users\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Homework\\Views\\Users\\Edit.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Users\\Edit.cshtml",
+              "RelativeToolTip": "Homework\\Views\\Users\\Edit.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAowDoAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-08T18:32:22.372Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Region.cs",
-              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Models\\Region.cs",
-              "RelativeDocumentMoniker": "Homework\\Models\\Region.cs",
-              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Models\\Region.cs",
-              "RelativeToolTip": "Homework\\Models\\Region.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Users\\Create.cshtml",
+              "RelativeDocumentMoniker": "Homework\\Views\\Users\\Create.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Users\\Create.cshtml",
+              "RelativeToolTip": "Homework\\Views\\Users\\Create.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAADcAAACBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-08T18:03:51.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Users\\Details.cshtml",
+              "RelativeDocumentMoniker": "Homework\\Views\\Users\\Details.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Users\\Details.cshtml",
+              "RelativeToolTip": "Homework\\Views\\Users\\Details.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACcAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-08T18:02:35.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Users\\Index.cshtml",
+              "RelativeDocumentMoniker": "Homework\\Views\\Users\\Index.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Users\\Index.cshtml",
+              "RelativeToolTip": "Homework\\Views\\Users\\Index.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAACwAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-08T17:59:32.58Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Users.cs",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Models\\Users.cs",
+              "RelativeDocumentMoniker": "Homework\\Models\\Users.cs",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Models\\Users.cs",
+              "RelativeToolTip": "Homework\\Models\\Users.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T17:29:24.885Z",
+              "WhenOpened": "2025-04-08T17:56:41.934Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Region\\Index.cshtml",
-              "RelativeDocumentMoniker": "Homework\\Views\\Region\\Index.cshtml",
-              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Region\\Index.cshtml",
-              "RelativeToolTip": "Homework\\Views\\Region\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-07T17:29:11.139Z",
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Homework\\Controllers\\UsersController.cs",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Homework\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAOkAAAAAAAAAAAAUwPkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T17:50:20.152Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RegionController.cs",
-              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Controllers\\RegionController.cs",
-              "RelativeDocumentMoniker": "Homework\\Controllers\\RegionController.cs",
-              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Controllers\\RegionController.cs",
-              "RelativeToolTip": "Homework\\Controllers\\RegionController.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwBEAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T17:27:14.776Z",
+              "DocumentIndex": 6,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Homework\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "G:\\IT-APTECH\\Bai-tap-Code\\MVC\\252331\\Homework\\Homework\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Homework\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-08T17:46:31.778Z",
               "EditorCaption": ""
             }
           ]

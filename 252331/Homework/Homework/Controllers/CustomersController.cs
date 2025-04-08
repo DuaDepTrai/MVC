@@ -13,7 +13,7 @@ using System.Data;
 
 namespace Homework.Controllers
 {
-    public class CustomersController : Controller
+    public class CustomersController : BaseController
     {
         //string strcnn = "Server=DESKTOP-J4J36M0\\SQLEXPRESS;Database=Northwind;Integrated Security=True;";
         string strcnn = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;

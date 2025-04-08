@@ -11,7 +11,7 @@ using System.Data;
 
 namespace Homework.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsController : BaseController
     {
         string strcnn = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
         List<Products> products = new List<Products>();

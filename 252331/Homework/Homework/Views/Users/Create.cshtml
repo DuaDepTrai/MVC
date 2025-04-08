@@ -1,0 +1,66 @@
+﻿@model Homework.Models.Users
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+
+    <!-- ✅ Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="container py-4">
+    <h3 class="mb-4 text-primary">Create New User</h3>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger mb-3" })
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.EmployeeID, htmlAttributes: new { @class = "form-label" })
+                    @Html.DropDownListFor(model => model.EmployeeID, new SelectList(@ViewBag.Employees, "EmployeeID", "FullName"), "Select employee", new { @class = "form-select" })
+                    @Html.ValidationMessageFor(model => model.EmployeeID, "", new { @class = "text-danger" })
+                </div>
+
+                <button type="submit" class="btn btn-success">Create</button>
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary ms-2" })
+            </div>
+        </div>
+    }
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger mt-3">@ViewBag.Error</div>
+    }
+</body>
+</html>

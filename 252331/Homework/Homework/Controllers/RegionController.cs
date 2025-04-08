@@ -10,7 +10,7 @@ using System.Configuration;
 
 namespace Homework.Controllers
 {
-    public class RegionController : Controller
+    public class RegionController : BaseController
     {
         //string strcnn = "Server=DESKTOP-A5P4OVC\\SQLEXPRESS;Database=Northwind;Integrated Security=True;";
         string strcnn = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;

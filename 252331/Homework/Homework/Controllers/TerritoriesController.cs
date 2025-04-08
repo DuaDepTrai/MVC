@@ -10,7 +10,7 @@ using System.Data;
 
 namespace Homework.Controllers
 {
-    public class TerritoriesController : Controller
+    public class TerritoriesController : BaseController
     {
         string strcnn = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
         List<Territories> territories = new List<Territories>();

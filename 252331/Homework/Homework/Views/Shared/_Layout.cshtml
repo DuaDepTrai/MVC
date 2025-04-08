@@ -15,10 +15,15 @@
             word-wrap: break-word; /* Tự xuống dòng khi nội dung quá dài */
             white-space: normal; /* Đảm bảo có thể xuống dòng */
         }
+        .sticky-top {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1030; /* đảm bảo nó nổi lên trên */
+        }
+
     </style>
 </head>
 <body>
-    <div class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+    <div class="navbar navbar-expand-lg navbar-dark bg-dark px-3 sticky-top">
         <a class="navbar-brand text-light" href="@Url.Action("Index", "Home")">🏠 Home</a>
         <a class="btn btn-outline-light mx-1" href="@Url.Action("Index", "Customers")">🤵 Customers</a>
         <a class="btn btn-outline-light mx-1" href="@Url.Action("Index", "Products")">📦 Products</a>
@@ -26,13 +31,45 @@
         <a class="btn btn-outline-light mx-1" href="@Url.Action("Index", "Shippers")">🚚 Shippers</a>
         <a class="btn btn-outline-light mx-1" href="@Url.Action("Index", "Region")">📍 Region</a>
         <a class="btn btn-outline-light mx-1" href="@Url.Action("Index", "Territories")">🗺️ Territories</a>
+        <a class="btn btn-outline-light mx-1" href="@Url.Action("Index", "Users")">👨🏻‍⚖️ Users</a>
+
+        <div class="ml-auto d-flex align-items-center">
+            @if (Session["UserName"] != null)
+            {
+                <span class="text-light mr-2">👋 Hello, @Session["UserName"]</span>
+                <button class="btn btn-outline-warning" data-toggle="modal" data-target="#logoutModal">Logout</button>
+            }
+        </div>
+
     </div>
 
     <div class="container-fluid mt-3">
         @RenderBody()
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Modal Bootstrap -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-warning text-dark">
+                    <h5 class="modal-title" id="logoutModalLabel">Confirm logout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure want to logout?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a href="@Url.Action("Logout", "Users")" class="btn btn-warning">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

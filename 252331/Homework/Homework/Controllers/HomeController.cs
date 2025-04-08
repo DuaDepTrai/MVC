@@ -6,11 +6,15 @@ using System.Web.Mvc;
 
 namespace Homework.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         // GET: Home
         public ActionResult Index()
         {
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
             return View();
         }
     }
