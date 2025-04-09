@@ -70,6 +70,11 @@ namespace Homework.Controllers
         [HttpPost]
         public ActionResult Create(Region obj)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(obj); // Trả lại view với thông báo lỗi
+            }
+
             try
             {
                 // TODO: Add insert logic here

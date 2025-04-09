@@ -141,6 +141,10 @@ namespace Homework.Controllers
         [HttpPost]
         public ActionResult Create(Users obj)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(obj);
+            }
             try
             {
                 // TODO: Add insert logic here

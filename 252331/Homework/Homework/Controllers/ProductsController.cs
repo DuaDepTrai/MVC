@@ -75,6 +75,35 @@ namespace Homework.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
+            SqlConnection conn = new SqlConnection(strcnn);
+            string Sql = "SELECT CategoryID, CategoryName FROM Categories";
+            SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            List<Categories> cates = new List<Categories>();
+            foreach (DataRow item in dt.Rows)
+            {
+                Categories cate = new Categories();
+                cate.CategoryID = int.Parse(item["CategoryID"].ToString());
+                cate.CategoryName = item["CategoryName"].ToString();
+                cates.Add(cate);
+            }
+            base.ViewBag.Categories = cates;
+
+            Sql = "SELECT SupplierID, CompanyName FROM Suppliers";
+            da = new SqlDataAdapter(Sql, conn);
+            dt = new DataTable();
+            da.Fill(dt);
+            List<Suppliers> supps = new List<Suppliers>();
+            foreach (DataRow item in dt.Rows)
+            {
+                Suppliers supp = new Suppliers();
+                supp.SupplierID = int.Parse(item["SupplierID"].ToString());
+                supp.CompanyName = item["CompanyName"].ToString();
+                supps.Add(supp);
+            }
+            base.ViewBag.Suppliers = supps;
+
             return View();
         }
 
@@ -123,11 +152,39 @@ namespace Homework.Controllers
         // GET: Products/Edit/5
         public ActionResult Edit(int id)
         {
-            Products product = new Products();
-            string Sql = "SELECT * FROM Products WHERE ProductID =" + id;
             SqlConnection conn = new SqlConnection(strcnn);
+            string Sql = "SELECT CategoryID, CategoryName FROM Categories";
             SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
             DataTable dt = new DataTable();
+            da.Fill(dt);
+            List<Categories> cates = new List<Categories>();
+            foreach (DataRow item in dt.Rows)
+            {
+                Categories cate = new Categories();
+                cate.CategoryID = int.Parse(item["CategoryID"].ToString());
+                cate.CategoryName = item["CategoryName"].ToString();
+                cates.Add(cate);
+            }
+            base.ViewBag.Categories = cates;
+
+            Sql = "SELECT SupplierID, CompanyName FROM Suppliers";
+            da = new SqlDataAdapter(Sql, conn);
+            dt = new DataTable();
+            da.Fill(dt);
+            List<Suppliers> supps = new List<Suppliers>();
+            foreach (DataRow item in dt.Rows)
+            {
+                Suppliers supp = new Suppliers();
+                supp.SupplierID = int.Parse(item["SupplierID"].ToString());
+                supp.CompanyName = item["CompanyName"].ToString();
+                supps.Add(supp);
+            }
+            base.ViewBag.Suppliers = supps;
+
+            Products product = new Products();
+            Sql = "SELECT * FROM Products WHERE ProductID =" + id;
+            da = new SqlDataAdapter(Sql, conn);
+            dt = new DataTable();
             da.Fill(dt);
             if (dt.Rows.Count > 0)
             {
@@ -145,7 +202,7 @@ namespace Homework.Controllers
             products.Clear();
             return View(product);
         }
-
+        
         // POST: Products/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, Products obj)

@@ -1,122 +1,59 @@
 ﻿@model Homework.Models.Suppliers
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>Suppliers</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.SupplierID)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.SupplierID)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.CompanyName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.CompanyName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.ContactName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.ContactName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.ContactTitle)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.ContactTitle)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Address)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Address)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.City)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.City)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Region)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Region)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.PostalCode)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.PostalCode)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Country)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Country)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Phone)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Phone)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Fax)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Fax)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Homepage)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Homepage)
-            </dd>
-    
-        </dl>
+    <h2 class="mb-4">Supplier Details</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">@Model.CompanyName</h5>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.SupplierID)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.SupplierID)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.CompanyName)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.CompanyName)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.ContactName)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.ContactName)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.ContactTitle)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.ContactTitle)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Address)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Address)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.City)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.City)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Region)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Region)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PostalCode)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.PostalCode)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Country)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Country)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Phone)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Phone)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Fax)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Fax)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Homepage)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Homepage)</dd>
+            </dl>
+        </div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id=Model.SupplierID }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+
+    <div class="mt-4">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.SupplierID }, new { @class = "btn btn-warning me-2" })
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+
