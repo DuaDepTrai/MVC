@@ -16,7 +16,8 @@ namespace Homework.Models
         [Compare("Password")]
         public string RePassword { get; set; }
         public string Description { get; set; }
-        public int EmployeeID { get; set; }
+        [Required(ErrorMessage = "Employee is required!")]
+        public int? EmployeeID { get; set; }
         public bool Remember { get; set; }
         public string FullName { get; set; }
     }

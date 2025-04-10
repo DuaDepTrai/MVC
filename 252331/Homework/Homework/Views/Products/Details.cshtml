@@ -4,45 +4,47 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <div class="card shadow p-4">
-        <h3 class="text-primary mb-4">Product Details</h3>
+<div class="container edit-container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="text-primary">Product Information</h2>
+            <hr />
 
-        <dl class="row">
-            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.ProductID)</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.ProductID)</dd>
+            <dl class="row">
 
-            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.ProductName)</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.ProductName)</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.ProductName)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.ProductName)</dd>
 
-            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.SupplierID)</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.SupplierID)</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Supplier)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Supplier)</dd>
 
-            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.CategoryID)</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.CategoryID)</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Category)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Category)</dd>
 
-            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.QuantityPerUnit)</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.QuantityPerUnit)</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.QuantityPerUnit)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.QuantityPerUnit)</dd>
 
-            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.UnitPrice)</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.UnitPrice)</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.UnitPrice)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.UnitPrice)</dd>
 
-            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.UnitsInStock)</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.UnitsInStock)</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.UnitsInStock)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.UnitsInStock)</dd>
 
-            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.UnitsOnOrder)</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.UnitsOnOrder)</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.UnitsOnOrder)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.UnitsOnOrder)</dd>
 
-            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.ReorderLevel)</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.ReorderLevel)</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.ReorderLevel)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.ReorderLevel)</dd>
 
-            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Discontinued)</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.Discontinued)</dd>
-        </dl>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Discontinued)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Discontinued)</dd>
+            </dl>
 
-        <div class="mt-4">
-            @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }, new { @class = "btn btn-primary me-2" })
-            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+            <div class="card-footer text-end">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }, new { @class = "btn btn-primary me-2" })
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+            </div>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -7,7 +7,7 @@
     <div class="container details-container">
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title text-center mb-4">Customer Information</h3>
+                <h2 class="mb-4 text-primary">Customer Information</h2>
                 <hr />
 
                 <dl class="row">
@@ -45,7 +45,7 @@
                     <dd class="col-sm-8">@Html.DisplayFor(model => model.Fax)</dd>
                 </dl>
 
-                <div class="text-end mt-4">
+                <div class="card-footer text-end">
                     @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerID }, new { @class = "btn btn-primary btn-space" })
                     @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
                 </div>

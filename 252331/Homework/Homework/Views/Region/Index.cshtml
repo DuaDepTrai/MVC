@@ -21,9 +21,9 @@
                 @Html.DisplayFor(modelItem => item.RegionDescription)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.RegionID }, new { @class = "btn btn-warning btn-sm" })
-                @Html.ActionLink("Details", "Details", new { id=item.RegionID }, new { @class = "btn btn-info btn-sm" })
-                @Html.ActionLink("Delete", "Delete", new { id=item.RegionID }, new { @class = "btn btn-danger btn-sm" })
+                @Html.ActionLink("Details", "Details", new { id = item.RegionID }, new { @class = "btn btn-info btn-sm" })
+                @Html.ActionLink("Edit", "Edit", new { id = item.RegionID }, new { @class = "btn btn-warning btn-sm" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.RegionID }, new { @class = "btn btn-danger btn-sm" })
             </td>
         </tr>
     }

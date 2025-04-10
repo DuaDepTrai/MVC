@@ -4,45 +4,38 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <div class="container">
-        <div class="card">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0">User Details</h4>
-            </div>
-            <div class="card-body">
-                <dl class="row">
-                    <dt class="col-sm-3">
-                        @Html.DisplayNameFor(model => model.UserID)
-                    </dt>
-                    <dd class="col-sm-9">
-                        @Html.DisplayFor(model => model.UserID)
-                    </dd>
+<div class="container edit-container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="text-primary">User Information</h2>
+            <hr />
 
-                    <dt class="col-sm-3">
-                        @Html.DisplayNameFor(model => model.UserName)
-                    </dt>
-                    <dd class="col-sm-9">
-                        @Html.DisplayFor(model => model.UserName)
-                    </dd>
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.UserName)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.UserName)
+                </dd>
 
-                    <dt class="col-sm-3">
-                        @Html.DisplayNameFor(model => model.FullName)
-                    </dt>
-                    <dd class="col-sm-9">
-                        @Html.DisplayFor(model => model.FullName)
-                    </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.FullName)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.FullName)
+                </dd>
 
-                    <dt class="col-sm-3">
-                        @Html.DisplayNameFor(model => model.Description)
-                    </dt>
-                    <dd class="col-sm-9">
-                        @Html.DisplayFor(model => model.Description)
-                    </dd>
-                </dl>
-            </div>
-            <div class="card-footer">
-                @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }, new { @class = "btn btn-warning me-2" })
-                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
-            </div>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer text-end">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }, new { @class = "btn btn-warning me-2" })
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
         </div>
     </div>
+</div>

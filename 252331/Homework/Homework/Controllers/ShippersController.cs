@@ -13,7 +13,7 @@ using System.Drawing;
 
 namespace Homework.Controllers
 {
-    public class ShippersController : BaseController
+    public class ShippersController : Controller
     {
         //static string strcnn = "Server=DESKTOP-A5P4OVC\\SQLEXPRESS;Database=Northwind;Integrated Security=True;";
         string strcnn = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;

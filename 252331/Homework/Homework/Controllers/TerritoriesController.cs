@@ -10,7 +10,7 @@ using System.Data;
 
 namespace Homework.Controllers
 {
-    public class TerritoriesController : BaseController
+    public class TerritoriesController : Controller
     {
         string strcnn = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
         List<Territories> territories = new List<Territories>();
@@ -21,7 +21,11 @@ namespace Homework.Controllers
             SqlDataAdapter da = new SqlDataAdapter();
 
             DataSet ds = new DataSet();
-            string Sql = "SELECT * FROM Territories";
+            string Sql = "SELECT Territories.TerritoryID, " +
+                "Territories.TerritoryDescription, " +
+                "Region.RegionDescription AS Region " +
+                "FROM Territories " +
+                "LEFT OUTER JOIN Region ON Territories.RegionID = Region.RegionID";
             da = new SqlDataAdapter(Sql, conn);
             da.Fill(ds, "Territories");
 
@@ -30,7 +34,7 @@ namespace Homework.Controllers
                 Territories ter = new Territories();
                 ter.TerritoryID = item["TerritoryID"].ToString();
                 ter.TerritoryDescription = item["TerritoryDescription"].ToString();
-                ter.RegionID = int.Parse(item["RegionID"].ToString());
+                ter.Region = item["Region"].ToString();
                 territories.Add(ter);
             }
             return View(territories);
@@ -40,7 +44,12 @@ namespace Homework.Controllers
         public ActionResult Details(string id)
         {
             Territories ter = new Territories();
-            string Sql = "SELECT * FROM Territories WHERE TerritoryID=N'" + id + "'";
+            string Sql = "SELECT Territories.TerritoryID, " +
+                "Territories.TerritoryDescription, " +
+                "Region.RegionDescription AS Region " +
+                "FROM Territories " +
+                "LEFT OUTER JOIN Region ON Territories.RegionID = Region.RegionID " +
+                "WHERE TerritoryID=N'" + id + "'";
             SqlConnection conn = new SqlConnection(strcnn);
             SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
             DataTable dt = new DataTable();
@@ -50,7 +59,7 @@ namespace Homework.Controllers
             {
                 ter.TerritoryID = dt.Rows[0]["TerritoryID"].ToString();
                 ter.TerritoryDescription = dt.Rows[0]["TerritoryDescription"].ToString();
-                ter.RegionID = (int)dt.Rows[0]["RegionID"];
+                ter.Region = dt.Rows[0]["Region"].ToString();
             }
             territories.Clear();
             return View(ter);
@@ -59,6 +68,7 @@ namespace Homework.Controllers
         // GET: Territories/Create
         public ActionResult Create()
         {
+            LoadRegion();
             return View();
         }
 
@@ -68,6 +78,12 @@ namespace Homework.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    LoadRegion();
+                    return View(obj);
+                }
+
                 // TODO: Add insert logic here
                 if (obj != null) 
                 {
@@ -90,15 +106,20 @@ namespace Homework.Controllers
                 territories.Clear ();
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                ViewBag.Error = e.Message;
+                LoadRegion();
+                return View(obj); ;
             }
         }
+
 
         // GET: Territories/Edit/5
         public ActionResult Edit(string id)
         {
+            LoadRegion();
+
             Territories ter = new Territories();
             string Sql = "SELECT * FROM Territories WHERE TerritoryID=N'" + id + "'";
             SqlConnection conn = new SqlConnection(strcnn);
@@ -120,6 +141,11 @@ namespace Homework.Controllers
         [HttpPost]
         public ActionResult Edit(string id, Territories obj)
         {
+            if (!ModelState.IsValid)
+            {
+                LoadRegion();
+                return View(obj);
+            }
             try
             {
                 // TODO: Add update logic here
@@ -145,9 +171,11 @@ namespace Homework.Controllers
                 territories.Clear();
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                ViewBag.Error = e.Message;
+                LoadRegion();
+                return View(obj); ;
             }
         }
 
@@ -155,7 +183,12 @@ namespace Homework.Controllers
         public ActionResult Delete(string id)
         {
             Territories ter = new Territories();
-            string Sql = "SELECT * FROM Territories WHERE TerritoryID=N'" + id + "'";
+            string Sql = "SELECT Territories.TerritoryID, " +
+                "Territories.TerritoryDescription, " +
+                "Region.RegionDescription AS Region " +
+                "FROM Territories " +
+                "LEFT OUTER JOIN Region ON Territories.RegionID = Region.RegionID " +
+                "WHERE TerritoryID=N'" + id + "'";
             SqlConnection conn = new SqlConnection(strcnn);
             SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
             DataTable dt = new DataTable();
@@ -165,7 +198,7 @@ namespace Homework.Controllers
             {
                 ter.TerritoryID = dt.Rows[0]["TerritoryID"].ToString();
                 ter.TerritoryDescription = dt.Rows[0]["TerritoryDescription"].ToString();
-                ter.RegionID = (int)dt.Rows[0]["RegionID"];
+                ter.Region = dt.Rows[0]["Region"].ToString();
             }
             territories.Clear();
             return View(ter);
@@ -200,6 +233,24 @@ namespace Homework.Controllers
             {
                 return View();
             }
+        }
+
+        private void LoadRegion()
+        {
+            SqlConnection conn = new SqlConnection(strcnn);
+            string Sql = "SELECT RegionID, RegionDescription FROM Region";
+            SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            List<Region> regions = new List<Region>();
+            foreach (DataRow item in dt.Rows)
+            {
+                Region region = new Region();
+                region.RegionID = int.Parse(item["RegionID"].ToString());
+                region.RegionDescription = item["RegionDescription"].ToString();
+                regions.Add(region);
+            }
+            ViewBag.Region = regions;
         }
     }
 }

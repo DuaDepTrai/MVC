@@ -7,7 +7,7 @@
     <div class="container delete-container">
         <div class="card border-danger">
             <div class="card-body">
-                <h3 class="card-title text-danger text-center">Confirm Delete</h3>
+                <h3 class="text-danger mb-4">Confirm delete this customer?</h3>
                 <hr />
 
                 <dl class="row">
@@ -49,7 +49,7 @@
                 {
                     @Html.AntiForgeryToken()
 
-                    <div class="text-end mt-4">
+                    <div class="card-footer text-end">
                         <input type="submit" value="Delete" class="btn btn-danger btn-space" />
                         @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
                     </div>

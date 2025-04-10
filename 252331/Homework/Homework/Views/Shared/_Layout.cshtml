@@ -1,6 +1,16 @@
-﻿<!DOCTYPE html>
+﻿
+
+
+<!DOCTYPE html>
 <html>
+
 <head>
+    @{
+        if (Session["UserName"] == null)
+        {
+            Response.Redirect("~/Users/Login");
+        }
+    }
     <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />

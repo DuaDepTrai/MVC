@@ -14,9 +14,6 @@
     <table class="table table-striped">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ShipperID)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.CompanyName)
             </th>
             <th>
@@ -29,17 +26,14 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ShipperID)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.CompanyName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Phone)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ShipperID }, new { @class = "btn btn-warning btn-sm" })
                     @Html.ActionLink("Details", "Details", new { id = item.ShipperID }, new { @class = "btn btn-info btn-sm" })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ShipperID }, new { @class = "btn btn-warning btn-sm" })
                     @Html.ActionLink("Delete", "Delete", new { id = item.ShipperID }, new { @class = "btn btn-danger btn-sm" })
                 </td>
             </tr>

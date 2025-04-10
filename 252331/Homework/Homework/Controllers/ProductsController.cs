@@ -11,7 +11,7 @@ using System.Data;
 
 namespace Homework.Controllers
 {
-    public class ProductsController : BaseController
+    public class ProductsController : Controller
     {
         string strcnn = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
         List<Products> products = new List<Products>();
@@ -22,7 +22,19 @@ namespace Homework.Controllers
             SqlDataAdapter da = new SqlDataAdapter();
 
             DataSet ds = new DataSet();
-            string Sql = "SELECT * FROM Products";
+            string Sql = "SELECT Products.ProductID, " +
+                "Products.ProductName, " +
+                "Suppliers.CompanyName AS Supplier, " +
+                "Categories.CategoryName AS Category, " +
+                "Products.QuantityPerUnit, " +
+                "Products.UnitPrice, " +
+                "Products.UnitsInStock, " +
+                "Products.UnitsOnOrder, " +
+                "Products.ReorderLevel, " +
+                "Products.Discontinued " +
+                "FROM Products " +
+                "LEFT OUTER JOIN Suppliers ON Products.SupplierID = Suppliers.SupplierID " +
+                "LEFT OUTER JOIN Categories ON Products.CategoryID = Categories.CategoryID";
             da = new SqlDataAdapter(Sql, conn);
             da.Fill(ds, "Products");
 
@@ -31,8 +43,8 @@ namespace Homework.Controllers
                 Products product = new Products();
                 product.ProductID = int.Parse(item["ProductID"].ToString());
                 product.ProductName = item["ProductName"].ToString();
-                product.SupplierID = int.Parse(item["SupplierID"].ToString());
-                product.CategoryID = int.Parse(item["CategoryID"].ToString());
+                product.Supplier = item["Supplier"].ToString();
+                product.Category = item["Category"].ToString();
                 product.QuantityPerUnit = item["QuantityPerUnit"].ToString();
                 product.UnitPrice = decimal.Parse(item["UnitPrice"].ToString());
                 product.UnitsInStock = short.Parse(item["UnitsInStock"].ToString());
@@ -49,7 +61,20 @@ namespace Homework.Controllers
         public ActionResult Details(int id)
         {
             Products product = new Products();
-            string Sql = "SELECT * FROM Products WHERE ProductID=" + id;
+            string Sql = "SELECT Products.ProductID, " +
+            "Products.ProductName, " +
+            "Suppliers.CompanyName AS Supplier, " +
+            "Categories.CategoryName AS Category, " +
+            "Products.QuantityPerUnit, " +
+            "Products.UnitPrice, " +
+            "Products.UnitsInStock, " +
+            "Products.UnitsOnOrder, " +
+            "Products.ReorderLevel, " +
+            "Products.Discontinued " +
+            "FROM Products " +
+            "LEFT OUTER JOIN Suppliers ON Products.SupplierID = Suppliers.SupplierID " +
+            "LEFT OUTER JOIN Categories ON Products.CategoryID = Categories.CategoryID " +
+            "WHERE Products.ProductID = " + id;
             SqlConnection conn = new SqlConnection(strcnn);
             SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
             DataTable dt = new DataTable();
@@ -58,8 +83,8 @@ namespace Homework.Controllers
             {
                 product.ProductID = (int)dt.Rows[0]["ProductID"];
                 product.ProductName = dt.Rows[0]["ProductName"].ToString();
-                product.SupplierID = (int)dt.Rows[0]["SupplierID"];
-                product.CategoryID = (int)dt.Rows[0]["CategoryID"];
+                product.Supplier = dt.Rows[0]["Supplier"].ToString();
+                product.Category = dt.Rows[0]["Category"].ToString();
                 product.QuantityPerUnit = dt.Rows[0]["QuantityPerUnit"].ToString();
                 product.UnitPrice = (decimal)dt.Rows[0]["UnitPrice"];
                 product.UnitsInStock = (short)dt.Rows[0]["UnitsInStock"];
@@ -75,35 +100,8 @@ namespace Homework.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
-            SqlConnection conn = new SqlConnection(strcnn);
-            string Sql = "SELECT CategoryID, CategoryName FROM Categories";
-            SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            List<Categories> cates = new List<Categories>();
-            foreach (DataRow item in dt.Rows)
-            {
-                Categories cate = new Categories();
-                cate.CategoryID = int.Parse(item["CategoryID"].ToString());
-                cate.CategoryName = item["CategoryName"].ToString();
-                cates.Add(cate);
-            }
-            base.ViewBag.Categories = cates;
-
-            Sql = "SELECT SupplierID, CompanyName FROM Suppliers";
-            da = new SqlDataAdapter(Sql, conn);
-            dt = new DataTable();
-            da.Fill(dt);
-            List<Suppliers> supps = new List<Suppliers>();
-            foreach (DataRow item in dt.Rows)
-            {
-                Suppliers supp = new Suppliers();
-                supp.SupplierID = int.Parse(item["SupplierID"].ToString());
-                supp.CompanyName = item["CompanyName"].ToString();
-                supps.Add(supp);
-            }
-            base.ViewBag.Suppliers = supps;
-
+            LoadCategories();
+            LoadSuppliers();
             return View();
         }
 
@@ -111,6 +109,12 @@ namespace Homework.Controllers
         [HttpPost]
         public ActionResult Create(Products obj)
         {
+            if (!ModelState.IsValid)
+            {
+                LoadCategories();
+                LoadSuppliers();
+                return View(obj);
+            }
             try
             {
                 // TODO: Add insert logic here
@@ -145,46 +149,24 @@ namespace Homework.Controllers
             catch (Exception ex)
             {
                 ViewBag.Error = ex.Message;
+                LoadCategories();
+                LoadSuppliers();
                 return View();
             }
         }
 
+        
         // GET: Products/Edit/5
         public ActionResult Edit(int id)
         {
-            SqlConnection conn = new SqlConnection(strcnn);
-            string Sql = "SELECT CategoryID, CategoryName FROM Categories";
-            SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            List<Categories> cates = new List<Categories>();
-            foreach (DataRow item in dt.Rows)
-            {
-                Categories cate = new Categories();
-                cate.CategoryID = int.Parse(item["CategoryID"].ToString());
-                cate.CategoryName = item["CategoryName"].ToString();
-                cates.Add(cate);
-            }
-            base.ViewBag.Categories = cates;
-
-            Sql = "SELECT SupplierID, CompanyName FROM Suppliers";
-            da = new SqlDataAdapter(Sql, conn);
-            dt = new DataTable();
-            da.Fill(dt);
-            List<Suppliers> supps = new List<Suppliers>();
-            foreach (DataRow item in dt.Rows)
-            {
-                Suppliers supp = new Suppliers();
-                supp.SupplierID = int.Parse(item["SupplierID"].ToString());
-                supp.CompanyName = item["CompanyName"].ToString();
-                supps.Add(supp);
-            }
-            base.ViewBag.Suppliers = supps;
+            LoadCategories();
+            LoadSuppliers();
 
             Products product = new Products();
-            Sql = "SELECT * FROM Products WHERE ProductID =" + id;
-            da = new SqlDataAdapter(Sql, conn);
-            dt = new DataTable();
+            string Sql = "SELECT * FROM Products WHERE ProductID =" + id;
+            SqlConnection conn = new SqlConnection(strcnn);
+            SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
+            DataTable dt = new DataTable();
             da.Fill(dt);
             if (dt.Rows.Count > 0)
             {
@@ -207,6 +189,12 @@ namespace Homework.Controllers
         [HttpPost]
         public ActionResult Edit(int id, Products obj)
         {
+            if (!ModelState.IsValid)
+            {
+                LoadCategories();
+                LoadSuppliers();
+                return View(obj);
+            }
             try
             {
                 // TODO: Add update logic here
@@ -241,6 +229,8 @@ namespace Homework.Controllers
             catch (Exception ex)
             {
                 ViewBag.Error = ex.Message;
+                LoadCategories();
+                LoadSuppliers();
                 return View();
             }
         }
@@ -249,7 +239,20 @@ namespace Homework.Controllers
         public ActionResult Delete(int id)
         {
             Products product = new Products();
-            string Sql = "SELECT * FROM Products WHERE ProductID=" + id;
+            string Sql = "SELECT Products.ProductID, " +
+            "Products.ProductName, " +
+            "Suppliers.CompanyName AS Supplier, " +
+            "Categories.CategoryName AS Category, " +
+            "Products.QuantityPerUnit, " +
+            "Products.UnitPrice, " +
+            "Products.UnitsInStock, " +
+            "Products.UnitsOnOrder, " +
+            "Products.ReorderLevel, " +
+            "Products.Discontinued " +
+            "FROM Products " +
+            "LEFT OUTER JOIN Suppliers ON Products.SupplierID = Suppliers.SupplierID " +
+            "LEFT OUTER JOIN Categories ON Products.CategoryID = Categories.CategoryID " +
+            "WHERE Products.ProductID = " + id;
             SqlConnection conn = new SqlConnection(strcnn);
             SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
             DataTable dt = new DataTable();
@@ -258,8 +261,8 @@ namespace Homework.Controllers
             {
                 product.ProductID = (int)dt.Rows[0]["ProductID"];
                 product.ProductName = dt.Rows[0]["ProductName"].ToString();
-                product.SupplierID = (int)dt.Rows[0]["SupplierID"];
-                product.CategoryID = (int)dt.Rows[0]["CategoryID"];
+                product.Supplier = dt.Rows[0]["Supplier"].ToString();
+                product.Category = dt.Rows[0]["Category"].ToString();
                 product.QuantityPerUnit = dt.Rows[0]["QuantityPerUnit"].ToString();
                 product.UnitPrice = (decimal)dt.Rows[0]["UnitPrice"];
                 product.UnitsInStock = (short)dt.Rows[0]["UnitsInStock"];
@@ -299,6 +302,42 @@ namespace Homework.Controllers
             {
                 return View();
             }
+        }
+
+        private void LoadSuppliers()
+        {
+            SqlConnection conn = new SqlConnection(strcnn);
+            string Sql = "SELECT SupplierID, CompanyName FROM Suppliers";
+            SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            List<Suppliers> supps = new List<Suppliers>();
+            foreach (DataRow item in dt.Rows)
+            {
+                Suppliers supp = new Suppliers();
+                supp.SupplierID = int.Parse(item["SupplierID"].ToString());
+                supp.CompanyName = item["CompanyName"].ToString();
+                supps.Add(supp);
+            }
+            ViewBag.Suppliers = supps;
+        }
+
+        private void LoadCategories()
+        {
+            SqlConnection conn = new SqlConnection(strcnn);
+            string Sql = "SELECT CategoryID, CategoryName FROM Categories";
+            SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            List<Categories> cates = new List<Categories>();
+            foreach (DataRow item in dt.Rows)
+            {
+                Categories cate = new Categories();
+                cate.CategoryID = int.Parse(item["CategoryID"].ToString());
+                cate.CategoryName = item["CategoryName"].ToString();
+                cates.Add(cate);
+            }
+            ViewBag.Categories = cates;
         }
     }
 }

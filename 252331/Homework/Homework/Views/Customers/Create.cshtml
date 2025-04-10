@@ -7,7 +7,8 @@
     <div class="container form-container">
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title text-center mb-4">Add New Customer</h3>
+                <h2 class="mb-4 text-primary">Add New Customer</h2>
+                <hr />
 
                 @using (Html.BeginForm())
                 {
@@ -85,7 +86,7 @@
                         </div>
                     </div>
 
-                    <div class="text-end">
+                    <div class="card-footer text-end">
                         <input type="submit" value="Create" class="btn btn-primary" />
                         @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary ms-2" })
                     </div>
