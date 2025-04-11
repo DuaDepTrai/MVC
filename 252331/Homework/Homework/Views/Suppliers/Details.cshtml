@@ -4,21 +4,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-    <h2 class="mb-4">Supplier Details</h2>
-
-    <div class="card shadow-sm">
-        <div class="card-header bg-primary text-white">
-            <h5 class="mb-0">@Model.CompanyName</h5>
-        </div>
+<div class="container edit-container">
+    <div class="card">
         <div class="card-body">
+
+            <h2 class="text-primary">Supplier Information</h2>
+            <hr />
+
             <dl class="row">
-                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.SupplierID)</dt>
-                <dd class="col-sm-9">@Html.DisplayFor(model => model.SupplierID)</dd>
-
-                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.CompanyName)</dt>
-                <dd class="col-sm-9">@Html.DisplayFor(model => model.CompanyName)</dd>
-
                 <dt class="col-sm-3">@Html.DisplayNameFor(model => model.ContactName)</dt>
                 <dd class="col-sm-9">@Html.DisplayFor(model => model.ContactName)</dd>
 
@@ -50,10 +43,13 @@
                 <dd class="col-sm-9">@Html.DisplayFor(model => model.Homepage)</dd>
             </dl>
         </div>
+        <div class="card-footer text-end">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.SupplierID }, new { @class = "btn btn-warning me-2" })
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
     </div>
 
-    <div class="mt-4">
-        @Html.ActionLink("Edit", "Edit", new { id = Model.SupplierID }, new { @class = "btn btn-warning me-2" })
-        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
-    </div>
 
+</div>
+    </div>
+</div>

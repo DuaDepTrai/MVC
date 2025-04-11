@@ -5,35 +5,40 @@
 }
 
 
-    <div>
-        <h4 class="text-primary">Territories</h4>
-        <hr />
-        <dl class="row">
-            <dt class="col-sm-3">
-                @Html.DisplayNameFor(model => model.TerritoryID)
-            </dt>
-            <dd class="col-sm-9">
-                @Html.DisplayFor(model => model.TerritoryID)
-            </dd>
+<div class="container edit-container">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="text-primary">Territory Information</h4>
+            <hr />
+            <div>
+                <dl class="row">
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.TerritoryID)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.TerritoryID)
+                    </dd>
 
-            <dt class="col-sm-3">
-                @Html.DisplayNameFor(model => model.TerritoryDescription)
-            </dt>
-            <dd class="col-sm-9">
-                @Html.DisplayFor(model => model.TerritoryDescription)
-            </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.TerritoryDescription)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.TerritoryDescription)
+                    </dd>
 
-            <dt class="col-sm-3">
-                @Html.DisplayNameFor(model => model.RegionID)
-            </dt>
-            <dd class="col-sm-9">
-                @Html.DisplayFor(model => model.RegionID)
-            </dd>
-        </dl>
-    </div>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Region)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Region)
+                    </dd>
+                </dl>
+            </div>
+            <div class="card-footer text-end">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.TerritoryID }, new { @class = "btn btn-primary me-2" })
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+            </div>
 
-    <div class="mt-3">
-        @Html.ActionLink("Edit", "Edit", new { id = Model.TerritoryID }, new { @class = "btn btn-primary me-2" })
-        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
-    </div>
-
+            </div>
+        </div>
+</div>

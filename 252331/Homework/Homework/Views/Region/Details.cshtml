@@ -4,9 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <div class="card shadow-sm">
+<div class="container edit-container">
+    <div class="card">
         <div class="card-body">
-            <h4 class="text-primary">Region</h4>
+            <h2 class="text-primary">Region Information</h2>
             <hr />
 
             <dl class="row">
@@ -18,9 +19,10 @@
                 </dd>
             </dl>
 
-            <div class="mt-4">
+            <div class="card-footer text-end">
                 @Html.ActionLink("Edit", "Edit", new { id = Model.RegionID }, new { @class = "btn btn-warning me-2" })
                 @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
             </div>
         </div>
     </div>
+</div>

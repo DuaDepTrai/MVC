@@ -13,7 +13,7 @@ using System.Data;
 
 namespace Homework.Controllers
 {
-    public class CustomersController : BaseController
+    public class CustomersController : Controller
     {
         //string strcnn = "Server=DESKTOP-J4J36M0\\SQLEXPRESS;Database=Northwind;Integrated Security=True;";
         string strcnn = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
@@ -85,6 +85,10 @@ namespace Homework.Controllers
         [HttpPost]
         public ActionResult Create(Customers obj)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(obj);
+            }
             try
             {
                 // TODO: Add insert logic here
@@ -158,6 +162,10 @@ namespace Homework.Controllers
         [HttpPost]
         public ActionResult Edit(string id, Customers obj)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(obj);
+            }
             try
             {
                 // TODO: Add update logic here

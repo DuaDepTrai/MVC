@@ -5,12 +5,12 @@
     ViewBag.Title = "Shipper Details";
 }
 
-<div class="container mt-5">
+<div class="container edit-container">
     <div class="card">
-        <div class="card-header">
-            <h4 class="mb-0">Shipper Details</h4>
-        </div>
         <div class="card-body">
+            <h2 class="text-primary">Shipper Information</h2>
+            <hr />
+
             <dl class="row">
                 <dt class="col-sm-3">@Html.DisplayNameFor(model => model.CompanyName)</dt>
                 <dd class="col-sm-9">@Html.DisplayFor(model => model.CompanyName)</dd>
@@ -19,7 +19,7 @@
                 <dd class="col-sm-9">@Html.DisplayFor(model => model.Phone)</dd>
             </dl>
         </div>
-        <div class="card-footer">
+        <div class="card-footer text-end">
             @Html.ActionLink("Edit", "Edit", new { id = Model.ShipperID }, new { @class = "btn btn-warning me-2" })
             @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
         </div>

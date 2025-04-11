@@ -1,0 +1,64 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+[Bb]uild/
+[Bb]uild[Ll]og.*
+
+# NuGet packages
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+packages/
+# except build/, which is used as an MSBuild target.
+!packages/build/
+
+# Microsoft Azure Web App publish settings
+PublishProfiles/
+
+# Rider
+.idea/
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# DotCover
+*.dotCover
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Others
+*.dbmdl
+*.log
+*.tlog
+*.tmp
+*.cache
+*.bak
+*.orig
+
+# Local test results
+TestResults/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Backup & reports
+*.Backup
+*.Report
+
+# Logs
+*.log

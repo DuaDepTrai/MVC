@@ -11,7 +11,7 @@ using System.Data;
 
 namespace Homework.Controllers
 {
-    public class SuppliersController : BaseController
+    public class SuppliersController : Controller
     {
         string strcnn = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
         static List<Suppliers> suppliers = new List<Suppliers>();

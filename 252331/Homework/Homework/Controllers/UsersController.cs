@@ -10,7 +10,7 @@ using System.Data;
 
 namespace Homework.Controllers
 {
-    public class UsersController : BaseController
+    public class UsersController : Controller
     {
         string strcnn = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
         List<Users> users = new List<Users>();
@@ -118,22 +118,7 @@ namespace Homework.Controllers
         // GET: Users/Create
         public ActionResult Create()
         {
-            SqlConnection conn = new SqlConnection(strcnn);
-            string Sql = "SELECT EmployeeID, LastName + ' ' + FirstName AS FullName FROM Employees";
-            SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-
-            List<Employees> emps = new List<Employees>();
-            foreach (DataRow item in dt.Rows)
-            {
-                Employees emp = new Employees();
-                emp.EmployeeID = int.Parse(item["EmployeeID"].ToString());
-                emp.FullName = item["FullName"].ToString();
-                emps.Add(emp);
-            }
-            ViewBag.Employees = emps;
-
+            LoadEmployees();
             return View();
         }
 
@@ -143,6 +128,7 @@ namespace Homework.Controllers
         {
             if (!ModelState.IsValid)
             {
+                LoadEmployees();
                 return View(obj);
             }
             try
@@ -174,6 +160,7 @@ namespace Homework.Controllers
             catch (Exception ex)
             {
                 ViewBag.Error = ex.Message;
+                LoadEmployees();
                 return View();
             }
         }
@@ -181,30 +168,15 @@ namespace Homework.Controllers
         // GET: Users/Edit/5
         public ActionResult Edit(int id)
         {
-            SqlConnection conn = new SqlConnection(strcnn);
-            string Sql = "SELECT EmployeeID, LastName + ' ' + FirstName AS FullName FROM Employees";
-            SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-
-            List<Employees> emps = new List<Employees>();
-            foreach (DataRow item in dt.Rows)
-            {
-                Employees emp = new Employees();
-                emp.EmployeeID = int.Parse(item["EmployeeID"].ToString());
-                emp.FullName = item["FullName"].ToString();
-                emps.Add(emp);
-            }
-            ViewBag.Employees = emps;
+            LoadEmployees();
 
             Users user = new Users();
-            Sql = "SELECT USERS.UserName, USERS.Password, USERS.Discription, USERS.EmployeeID, Employees.LastName + ' ' + Employees.FirstName AS FullName " +
+            string Sql = "SELECT USERS.UserName, USERS.Password, USERS.Discription, USERS.EmployeeID, Employees.LastName + ' ' + Employees.FirstName AS FullName " +
                 "FROM USERS LEFT OUTER JOIN Employees ON USERS.EmployeeID = Employees.EmployeeID WHERE UserID=" + id;
 
-            //string Sql = "SELECT * FROM USERS WHERE UserID=" + id;
-            //SqlConnection conn = new SqlConnection(strcnn);
-            da = new SqlDataAdapter(Sql, conn);
-            dt = new DataTable();
+            SqlConnection conn = new SqlConnection(strcnn);
+            SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
+            DataTable dt = new DataTable();
             da.Fill(dt);
             if (dt.Rows.Count > 0)
             {
@@ -222,6 +194,11 @@ namespace Homework.Controllers
         [HttpPost]
         public ActionResult Edit(int id, Users obj)
         {
+            if (!ModelState.IsValid)
+            {
+                LoadEmployees();
+                return View(obj);
+            }
             try
             {
                 // TODO: Add update logic here
@@ -251,23 +228,7 @@ namespace Homework.Controllers
             catch (Exception ex)
             {
                 ViewBag.Error = ex.Message;
-
-                SqlConnection conn = new SqlConnection(strcnn);
-                string Sql = "SELECT EmployeeID, LastName + ' ' + FirstName AS FullName FROM Employees";
-                SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                List<Employees> emps = new List<Employees>();
-                foreach (DataRow item in dt.Rows)
-                {
-                    Employees emp = new Employees();
-                    emp.EmployeeID = int.Parse(item["EmployeeID"].ToString());
-                    emp.FullName = item["FullName"].ToString();
-                    emps.Add(emp);
-                }
-                ViewBag.Employees = emps;
-
+                LoadEmployees();
                 return View(obj);
             }
         }
@@ -324,6 +285,25 @@ namespace Homework.Controllers
             {
                 return View();
             }
+        }
+
+        private void LoadEmployees()
+        {
+            SqlConnection conn = new SqlConnection(strcnn);
+            string Sql = "SELECT EmployeeID, LastName + ' ' + FirstName AS FullName FROM Employees";
+            SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            List<Employees> emps = new List<Employees>();
+            foreach (DataRow item in dt.Rows)
+            {
+                Employees emp = new Employees();
+                emp.EmployeeID = int.Parse(item["EmployeeID"].ToString());
+                emp.FullName = item["FullName"].ToString();
+                emps.Add(emp);
+            }
+            ViewBag.Employees = emps;
         }
     }
 }
