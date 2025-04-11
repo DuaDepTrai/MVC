@@ -7,11 +7,11 @@
       "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|e:\\aptech - it\\mvc\\252331\\homework\\homework\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|E:\\APTECH - IT\\MVC\\252331\\Homework\\homework\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|e:\\aptech - it\\mvc\\252331\\homework\\homework\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|E:\\APTECH - IT\\MVC\\252331\\Homework\\homework\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{61C8AF88-2B87-4922-8D84-BE86AB2FFD8C}|Homework\\Homework.csproj|solutionrelative:homework\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -59,8 +59,7 @@
               "RelativeToolTip": "Homework\\Controllers\\UsersController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T14:31:57.842Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T14:31:57.842Z"
             },
             {
               "$type": "Document",
@@ -72,8 +71,7 @@
               "RelativeToolTip": "Homework\\Controllers\\CustomersController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T14:31:11.681Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T14:31:11.681Z"
             }
           ]
         }
