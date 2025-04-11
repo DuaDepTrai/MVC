@@ -31,6 +31,62 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             z-index: 1030; /* đảm bảo nó nổi lên trên */
         }
+
+        /* Ghim phần tiêu đề + nút Create New */
+        .sticky-header {
+            position: sticky;
+            top: 56px;
+            background-color: white;
+            z-index: 1050;
+            padding: 10px 0;
+        }
+
+        table thead th {
+            position: sticky;
+            top: 112px; /* Chiều cao của sticky-header */
+            background-color: white;
+            z-index: 1040;
+        }
+
+        /* Cell chứa Homepage */
+        td.homepage-cell {
+            max-width: 150px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #007bff;
+            cursor: pointer;
+            padding: 0 4px;
+            font-size: 21px;
+        }
+
+            .copy-btn:hover {
+                color: #0056b3;
+            }
+
+        #alert-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #d1e7dd;
+            border: 1px solid #badbcc;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: #0f5132;
+            font-weight: bold;
+            display: none;
+            z-index: 9999;
+        }
     </style>
 </head>
 <body>
@@ -38,6 +94,7 @@
         <a class="navbar-brand text-light" href="@Url.Action("Index", "Home")">🏠 Home</a>
         <a class="btn btn-outline-light mx-1" href="@Url.Action("Index", "Customers")">🤵 Customers</a>
         <a class="btn btn-outline-light mx-1" href="@Url.Action("Index", "Products")">📦 Products</a>
+        <a class="btn btn-outline-light mx-1" href="@Url.Action("Index", "Orders")">📦 Orders</a>
         <a class="btn btn-outline-light mx-1" href="@Url.Action("Index", "Suppliers")">🏭 Suppliers</a>
         <a class="btn btn-outline-light mx-1" href="@Url.Action("Index", "Shippers")">🚚 Shippers</a>
         <a class="btn btn-outline-light mx-1" href="@Url.Action("Index", "Region")">📍 Region</a>

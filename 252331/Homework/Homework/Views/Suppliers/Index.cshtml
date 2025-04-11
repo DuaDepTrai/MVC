@@ -1,89 +1,60 @@
-﻿@model IEnumerable<Homework.Models.Suppliers>
-
+﻿@using System.Web
+@model IEnumerable<Homework.Models.Suppliers>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Suppliers";
 }
 
-    @{
-        ViewBag.Title = "Suppliers";
-    }
-    <p>
+<style>
+    
+</style>
+
+<!-- Sticky Header -->
+<div class="sticky-header">
+    <p class="mb-0">
         @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
     </p>
-    <table class="table table-striped">
+</div>
+
+<!-- Table Data -->
+<table class="table table-striped">
+    <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CompanyName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContactName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContactTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Region)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PostalCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Country)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fax)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Homepage)
-            </th>
+            <th>@Html.DisplayNameFor(model => model.CompanyName)</th>
+            <th>@Html.DisplayNameFor(model => model.ContactName)</th>
+            <th>@Html.DisplayNameFor(model => model.ContactTitle)</th>
+            <th>@Html.DisplayNameFor(model => model.Address)</th>
+            <th>@Html.DisplayNameFor(model => model.City)</th>
+            <th>@Html.DisplayNameFor(model => model.Region)</th>
+            <th>@Html.DisplayNameFor(model => model.PostalCode)</th>
+            <th>@Html.DisplayNameFor(model => model.Country)</th>
+            <th>@Html.DisplayNameFor(model => model.Phone)</th>
+            <th>@Html.DisplayNameFor(model => model.Fax)</th>
+            <th>@Html.DisplayNameFor(model => model.Homepage)</th>
             <th></th>
         </tr>
-
+    </thead>
+    <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CompanyName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContactName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContactTitle)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.City)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Region)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PostalCode)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Country)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Phone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Fax)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Homepage)
+                <td>@Html.DisplayFor(modelItem => item.CompanyName)</td>
+                <td>@Html.DisplayFor(modelItem => item.ContactName)</td>
+                <td>@Html.DisplayFor(modelItem => item.ContactTitle)</td>
+                <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                <td>@Html.DisplayFor(modelItem => item.City)</td>
+                <td>@Html.DisplayFor(modelItem => item.Region)</td>
+                <td>@Html.DisplayFor(modelItem => item.PostalCode)</td>
+                <td>@Html.DisplayFor(modelItem => item.Country)</td>
+                <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                <td>@Html.DisplayFor(modelItem => item.Fax)</td>
+                <td class="homepage-cell">
+                    @if (!string.IsNullOrEmpty(item.Homepage))
+                    {
+                        <span id="homepage-@item.SupplierID">@item.Homepage</span>
+                        <button class="copy-btn" onclick="copyHomepage('@HttpUtility.JavaScriptStringEncode(item.Homepage)')" title="Copy">❒</button>
+                    }
                 </td>
                 <td>
                     @Html.ActionLink("Details", "Details", new { id = item.SupplierID }, new { @class = "btn btn-info btn-sm" })
@@ -92,5 +63,30 @@
                 </td>
             </tr>
         }
+    </tbody>
+</table>
 
-    </table>
+<!-- Alert box hiển thị khi copy -->
+<div id="alert-box"></div>
+
+<script>
+    function copyHomepage(homepageValue) {
+        const tempInput = document.createElement("textarea");
+        tempInput.value = homepageValue;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        tempInput.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        showAlert("Copied: " + homepageValue);
+    }
+
+    function showAlert(message) {
+        const alertBox = document.getElementById('alert-box');
+        alertBox.innerText = message;
+        alertBox.style.display = 'block';
+        setTimeout(() => {
+            alertBox.style.display = 'none';
+        }, 2000);
+    }
+</script>

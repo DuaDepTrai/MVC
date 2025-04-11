@@ -2,30 +2,39 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Regions";
 }
 
-    <p>
+<!-- Ghim phần tiêu đề và nút Create New -->
+<div class="sticky-header">
+    <p class="mb-0">
         @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
     </p>
-    <table class="table table-striped">
+</div>
+
+<!-- Table hiển thị dữ liệu -->
+<table class="table table-striped">
+    <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.RegionDescription)
             </th>
             <th></th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RegionDescription)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = item.RegionID }, new { @class = "btn btn-info btn-sm" })
-                @Html.ActionLink("Edit", "Edit", new { id = item.RegionID }, new { @class = "btn btn-warning btn-sm" })
-                @Html.ActionLink("Delete", "Delete", new { id = item.RegionID }, new { @class = "btn btn-danger btn-sm" })
-            </td>
-        </tr>
-    }
-    
-    </table>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RegionDescription)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.RegionID }, new { @class = "btn btn-info btn-sm" })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.RegionID }, new { @class = "btn btn-warning btn-sm" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.RegionID }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
