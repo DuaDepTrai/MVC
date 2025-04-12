@@ -8,6 +8,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Homework.Models;
+using System.Diagnostics;
+using System.Globalization;
+
 
 namespace Homework.Controllers
 {
@@ -52,6 +55,7 @@ namespace Homework.Controllers
             foreach (DataRow item in ds.Tables[0].Rows)
             {
                 Orders order = new Orders();
+                order.OrderID = int.Parse(item["OrderID"].ToString());
                 order.CustomerID = item["CustomerID"].ToString();
                 order.CustomerName = item["CustomerName"].ToString();
                 order.EmployeeID = int.Parse(item["EmployeeID"].ToString());
@@ -109,7 +113,10 @@ namespace Homework.Controllers
             da.Fill(dt);
             if (dt.Rows.Count > 0)
             {
+                order.OrderID = int.Parse(dt.Rows[0]["OrderID"].ToString());
+                order.CustomerID = dt.Rows[0]["CustomerID"].ToString();
                 order.CustomerName = dt.Rows[0]["CustomerName"].ToString();
+                order.EmployeeID = int.Parse(dt.Rows[0]["EmployeeID"].ToString());
                 order.EmployeeName = dt.Rows[0]["FullName"].ToString();
                 order.OrderDate = (DateTime)dt.Rows[0]["OrderDate"];
                 order.RequiredDate = (DateTime)dt.Rows[0]["RequiredDate"];
@@ -117,6 +124,7 @@ namespace Homework.Controllers
                 {
                     order.ShippedDate = (DateTime)dt.Rows[0]["ShippedDate"];
                 }
+                order.ShipVia = int.Parse(dt.Rows[0]["ShipVia"].ToString());
                 order.ShipperName = dt.Rows[0]["ShipperName"].ToString();
                 order.Freight = decimal.Parse(dt.Rows[0]["Freight"].ToString());
                 order.ShipName = dt.Rows[0]["ShipName"].ToString();
@@ -137,7 +145,7 @@ namespace Homework.Controllers
             LoadCustomers();
             LoadEmployees();
             LoadShippers();
-            return View();
+            return View(new Orders());
         }
 
         // POST: Orders/Create
@@ -162,9 +170,9 @@ namespace Homework.Controllers
                         "ShipRegion, ShipPostalCode, ShipCountry) " +
                         "Values(N'" + obj.CustomerID + "', " +
                         "" + obj.EmployeeID + ", " +
-                        "" + obj.OrderDate + ", " +
-                        "" + obj.RequiredDate + ", " +
-                        "" + obj.ShippedDate + ", " +
+                        "'" + obj.OrderDate.ToString("yyyy-MM-dd HH:mm:ss") + "', " +
+                        "'" + obj.RequiredDate.ToString("yyyy-MM-dd HH:mm:ss") + "', " +
+                        "'" + obj.ShippedDate.ToString("yyyy-MM-dd HH:mm:ss") + "', " +
                         "" + obj.ShipVia + ", " +
                         "" + obj.Freight + ", " +
                         "N'" + obj.ShipName + "', " +
@@ -192,6 +200,8 @@ namespace Homework.Controllers
             catch (Exception ex)
             {
                 ViewBag.Error = ex.Message;
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException?.Message);
                 LoadCustomers();
                 LoadEmployees();
                 LoadShippers();
@@ -202,21 +212,132 @@ namespace Homework.Controllers
         // GET: Orders/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            LoadCustomers();
+            LoadEmployees();
+            LoadShippers();
+
+            Orders order = new Orders();
+            string Sql = "SELECT Orders.OrderID, " +
+                "Orders.CustomerID, " +
+                "Orders.EmployeeID, " +
+                "Orders.OrderDate, " +
+                "Orders.RequiredDate, " +
+                "Orders.ShippedDate, " +
+                "Orders.ShipVia, " +
+                "Orders.Freight, " +
+                "Orders.ShipName, " +
+                "Orders.ShipAddress, " +
+                "Orders.ShipCity, " +
+                "Orders.ShipRegion, " +
+                "Orders.ShipPostalCode, " +
+                "Orders.ShipCountry, " +
+                "Customers.CompanyName AS CustomerName, " +
+                "Shippers.CompanyName AS ShipperName, " +
+                "Employees.LastName + ' ' + Employees.FirstName AS FullName " +
+                "FROM Orders " +
+                "LEFT OUTER JOIN Shippers ON Orders.ShipVia = Shippers.ShipperID " +
+                "LEFT OUTER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID " +
+                "LEFT OUTER JOIN Customers ON Orders.CustomerID = Customers.CustomerID " +
+                "WHERE Orders.OrderID = " + id;
+            SqlConnection conn = new SqlConnection(strcnn);
+            SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                order.OrderID = int.Parse(dt.Rows[0]["OrderID"].ToString());
+                order.CustomerID = dt.Rows[0]["CustomerID"].ToString();
+                order.CustomerName = dt.Rows[0]["CustomerName"].ToString();
+                order.EmployeeID = int.Parse(dt.Rows[0]["EmployeeID"].ToString());
+                order.EmployeeName = dt.Rows[0]["FullName"].ToString();
+                order.OrderDate = (DateTime)dt.Rows[0]["OrderDate"];
+                order.RequiredDate = (DateTime)dt.Rows[0]["RequiredDate"];
+                if (dt.Rows[0]["ShippedDate"].ToString() != "" && dt.Rows[0]["ShippedDate"] != null)
+                {
+                    order.ShippedDate = (DateTime)dt.Rows[0]["ShippedDate"];
+                }
+                order.ShipVia = int.Parse(dt.Rows[0]["ShipVia"].ToString());
+                order.ShipperName = dt.Rows[0]["ShipperName"].ToString();
+                order.Freight = decimal.Parse(dt.Rows[0]["Freight"].ToString());
+                order.ShipName = dt.Rows[0]["ShipName"].ToString();
+                order.ShipAddress = dt.Rows[0]["ShipAddress"].ToString();
+                order.ShipCity = dt.Rows[0]["ShipCity"].ToString();
+                order.ShipRegion = dt.Rows[0]["ShipRegion"].ToString();
+                order.ShipPostalCode = dt.Rows[0]["ShipPostalCode"].ToString();
+                order.ShipCountry = dt.Rows[0]["ShipCountry"].ToString();
+            }
+            orders.Clear();
+
+            return View(order);
         }
 
         // POST: Orders/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Orders obj)
         {
+            if (!ModelState.IsValid)
+            {
+                LoadCustomers();
+                LoadEmployees();
+                LoadShippers();
+                return View(obj);
+            }
             try
             {
                 // TODO: Add update logic here
+                if (obj != null)
+                {
 
+                    string orderDate = obj.OrderDate == DateTime.MinValue
+                        ? "NULL"
+                        : "'" + obj.OrderDate.ToString("yyyy-MM-dd") + "'";
+
+                    string requiredDate = obj.RequiredDate == DateTime.MinValue
+                        ? "NULL"
+                        : "'" + obj.RequiredDate.ToString("yyyy-MM-dd") + "'";
+
+                    string shippedDate = obj.ShippedDate == DateTime.MinValue
+                        ? "NULL"
+                        : "'" + obj.ShippedDate.ToString("yyyy-MM-dd") + "'";
+
+                    string Sql = "UPDATE Orders " +
+                        "SET CustomerID=N'" + obj.CustomerID + "', " +
+                        "EmployeeID=" + obj.EmployeeID + ", " +
+                        "OrderDate=" + orderDate + ", " +
+                        "RequiredDate=" + requiredDate + ", " +
+                        "ShippedDate=" + shippedDate + ", " +
+                        "ShipVia=" + obj.ShipVia + ", " +
+                        "Freight=" + obj.Freight.ToString(CultureInfo.InvariantCulture) + ", " +
+                        "ShipName=N'" + obj.ShipName + "', " +
+                        "ShipAddress=N'" + obj.ShipAddress + "', " +
+                        "ShipCity=N'" + obj.ShipCity + "', " +
+                        "ShipRegion=N'" + obj.ShipRegion + "', " +
+                        "ShipPostalCode=N'" + obj.ShipPostalCode + "', " +
+                        "ShipCountry=N'" + obj.ShipCountry + "' " +
+                        "WHERE OrderID=" + id;
+                    Debug.WriteLine(Sql);  // hoặc Console.WriteLine nếu chạy console
+
+                    SqlConnection conn = new SqlConnection(strcnn);
+                    if (conn.State == ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandText = Sql;
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                }
+                orders.Clear();
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
+                ViewBag.Error = ex.Message;
+                LoadCustomers();
+                LoadEmployees();
+                LoadShippers();
                 return View();
             }
         }
@@ -224,17 +345,82 @@ namespace Homework.Controllers
         // GET: Orders/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Orders order = new Orders();
+            string Sql = "SELECT Orders.OrderID, " +
+                "Orders.CustomerID, " +
+                "Orders.EmployeeID, " +
+                "Orders.OrderDate, " +
+                "Orders.RequiredDate, " +
+                "Orders.ShippedDate, " +
+                "Orders.ShipVia, " +
+                "Orders.Freight, " +
+                "Orders.ShipName, " +
+                "Orders.ShipAddress, " +
+                "Orders.ShipCity, " +
+                "Orders.ShipRegion, " +
+                "Orders.ShipPostalCode, " +
+                "Orders.ShipCountry, " +
+                "Customers.CompanyName AS CustomerName, " +
+                "Shippers.CompanyName AS ShipperName, " +
+                "Employees.LastName + ' ' + Employees.FirstName AS FullName " +
+                "FROM Orders " +
+                "LEFT OUTER JOIN Shippers ON Orders.ShipVia = Shippers.ShipperID " +
+                "LEFT OUTER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID " +
+                "LEFT OUTER JOIN Customers ON Orders.CustomerID = Customers.CustomerID " +
+                "WHERE Orders.OrderID = " + id;
+            SqlConnection conn = new SqlConnection(strcnn);
+            SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                order.CustomerID = dt.Rows[0]["CustomerID"].ToString();
+                order.CustomerName = dt.Rows[0]["CustomerName"].ToString();
+                order.EmployeeID = int.Parse(dt.Rows[0]["EmployeeID"].ToString());
+                order.EmployeeName = dt.Rows[0]["FullName"].ToString();
+                order.OrderDate = (DateTime)dt.Rows[0]["OrderDate"];
+                order.RequiredDate = (DateTime)dt.Rows[0]["RequiredDate"];
+                if (dt.Rows[0]["ShippedDate"].ToString() != "" && dt.Rows[0]["ShippedDate"] != null)
+                {
+                    order.ShippedDate = (DateTime)dt.Rows[0]["ShippedDate"];
+                }
+                order.ShipVia = int.Parse(dt.Rows[0]["ShipVia"].ToString());
+                order.ShipperName = dt.Rows[0]["ShipperName"].ToString();
+                order.Freight = decimal.Parse(dt.Rows[0]["Freight"].ToString());
+                order.ShipName = dt.Rows[0]["ShipName"].ToString();
+                order.ShipAddress = dt.Rows[0]["ShipAddress"].ToString();
+                order.ShipCity = dt.Rows[0]["ShipCity"].ToString();
+                order.ShipRegion = dt.Rows[0]["ShipRegion"].ToString();
+                order.ShipPostalCode = dt.Rows[0]["ShipPostalCode"].ToString();
+                order.ShipCountry = dt.Rows[0]["ShipCountry"].ToString();
+            }
+            orders.Clear();
+
+            return View(order);
         }
 
         // POST: Orders/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Orders obj)
         {
             try
             {
                 // TODO: Add delete logic here
-
+                if (obj != null)
+                {
+                    string Sql = "DELETE FROM Orders WHERE OrderID=" + id;
+                    SqlConnection conn = new SqlConnection(strcnn);
+                    if (conn.State == ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandText = Sql;
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                }
+                orders.Clear();
                 return RedirectToAction("Index");
             }
             catch

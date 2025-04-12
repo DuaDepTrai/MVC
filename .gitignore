@@ -62,3 +62,5 @@ ehthumbs.db
 
 # Logs
 *.log
+
+Web.config

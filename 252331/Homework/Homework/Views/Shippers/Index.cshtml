@@ -34,7 +34,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Phone)
                 </td>
-                <td>
+                <td class="action-column">
                     @Html.ActionLink("Details", "Details", new { id = item.ShipperID }, new { @class = "btn btn-info btn-sm" })
                     @Html.ActionLink("Edit", "Edit", new { id = item.ShipperID }, new { @class = "btn btn-warning btn-sm" })
                     @Html.ActionLink("Delete", "Delete", new { id = item.ShipperID }, new { @class = "btn btn-danger btn-sm" })
