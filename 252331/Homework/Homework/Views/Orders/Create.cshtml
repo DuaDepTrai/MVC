@@ -49,7 +49,7 @@
                             {
                                 @class = "form-control flatpickr",
                                 @autocomplete = "off",
-                                  @Value = Model.OrderDate.ToString("dd/MM/yyyy")
+                                @Value = (Model.OrderDate == default(DateTime) ? DateTime.Today : Model.OrderDate).ToString("dd/MM/yyyy")
                             })
                         @Html.ValidationMessageFor(model => model.OrderDate, "", new { @class = "text-danger" })
                     </div>
@@ -61,7 +61,7 @@
                             {
                                 @class = "form-control flatpickr",
                                 @autocomplete = "off",
-                                  @Value = Model.RequiredDate.ToString("dd/MM/yyyy")
+                                @Value = (Model.OrderDate == default(DateTime) ? DateTime.Today : Model.OrderDate).ToString("dd/MM/yyyy")
                             })
                         @Html.ValidationMessageFor(model => model.RequiredDate, "", new { @class = "text-danger" })
                     </div>
@@ -73,7 +73,7 @@
                             {
                                 @class = "form-control flatpickr",
                                 @autocomplete = "off",
-                                  @Value = Model.ShippedDate.ToString("dd/MM/yyyy")
+                                @Value = (Model.OrderDate == default(DateTime) ? DateTime.Today : Model.OrderDate).ToString("dd/MM/yyyy")
                             })
                         @Html.ValidationMessageFor(model => model.ShippedDate, "", new { @class = "text-danger" })
                     </div>
@@ -94,13 +94,13 @@
                 </div>
 
                 <div class="row mb-3">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         @Html.LabelFor(model => model.ShipName, htmlAttributes: new { @class = "control-label" })
                         @Html.EditorFor(model => model.ShipName, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.ShipName, "", new { @class = "text-danger" })
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-9">
                         @Html.LabelFor(model => model.ShipAddress, htmlAttributes: new { @class = "control-label" })
                         @Html.EditorFor(model => model.ShipAddress, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.ShipAddress, "", new { @class = "text-danger" })
@@ -133,11 +133,56 @@
                     </div>
                 </div>
 
+                <hr />
+
+                //Order Details
+                List<Homework.Models.OrderDetails> orderDetails = new List<Homework.Models.OrderDetails>();
+                int i = 0;
+                if (Session["listOrders"] != null)
+                {
+                    orderDetails = (List<Homework.Models.OrderDetails>)Session["listOrders"];
+                }
+
+                <div class="text-end">
+                    @Html.ActionLink("Add New Product", "Create", "OrderDetails", null, new { @class = "btn btn-primary" })
+                </div>
+
+                <table class="table" border="1">
+                    <tr>
+                        <th>STT</th>
+                        <th>Product</th>
+                        <th>UnitPrice</th>
+                        <th>Quantity</th>
+                        <th>Discount</th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in orderDetails)
+                    {
+                        i = i + 1;
+                        <tr>
+                            <td>@i</td>
+                            <td>@Html.Hidden("ProductID", item.ProductID)</td>
+                            <td>@Html.Label(item.ProductName.ToString())</td>
+                            <td>@Html.Label(item.UnitPrice.ToString())</td>
+                            <td>@Html.Label(item.Quantity.ToString())</td>
+                            <td>@Html.Label(item.Discount.ToString())</td>
+                            <td>
+                                @Html.ActionLink("Details", "Details", new { OrderID = Model.OrderID, ProductID = item.ProductID }, null) |
+                                @Html.ActionLink("Edit", "Edit", new { OrderID = Model.OrderID, ProductID = item.ProductID }, null) |
+                                @Html.ActionLink("Delete", "Delete", new { OrderID = Model.OrderID, ProductID = item.ProductID }, null)
+                            </td>
+                        </tr>
+                    }
+                </table>
+
                 <div class="card-footer text-end">
                     <input type="submit" value="Create" class="btn btn-primary"
                            @(ViewBag.Customers == null || ViewBag.Employees == null || ViewBag.Shippers == null ? "disabled" : "") />
                     @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary ms-2" })
                 </div>
+
+
             }
 
         </div>

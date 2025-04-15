@@ -44,7 +44,8 @@ namespace Homework.Controllers
                 "FROM Orders " +
                 "LEFT OUTER JOIN Shippers ON Orders.ShipVia = Shippers.ShipperID " +
                 "LEFT OUTER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID " +
-                "LEFT OUTER JOIN Customers ON Orders.CustomerID = Customers.CustomerID";
+                "LEFT OUTER JOIN Customers ON Orders.CustomerID = Customers.CustomerID " +
+                "ORDER BY Orders.OrderID DESC";
 
             SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
             DataSet ds = new DataSet(); 
@@ -145,6 +146,15 @@ namespace Homework.Controllers
             LoadCustomers();
             LoadEmployees();
             LoadShippers();
+
+            List<OrderDetails> listOrders = new List<OrderDetails>();
+
+            if (Session["listOrders"] == null)
+            {
+                Session["listOrders"] = listOrders;
+            }
+
+
             return View(new Orders());
         }
 
@@ -193,6 +203,35 @@ namespace Homework.Controllers
                     cmd.CommandText = Sql;
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
+
+                    //Order Details
+                    Sql = "SELECT Max(OrderID) FROM Orders";
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
+                    da.Fill(dt);
+
+                    var OrderID = dt.Rows[0][0];
+
+                    List<OrderDetails> orderDetails = new List<OrderDetails>();
+                    int i = 0;
+                    if (Session["listOrders"] != null)
+                    {
+                        orderDetails = (List<OrderDetails>)Session["listOrders"];
+                    }
+
+                    foreach (var item in orderDetails) 
+                    {
+                        Sql = "INSERT INTO [Order Details] (OrderID, " +
+                        "ProductID, UnitPrice, Quantity, Discount) " +
+                        "Values(" + OrderID + "', " +
+                        "" + item.ProductID + ", " +
+                        "'" + item.UnitPrice + "', " +
+                        "'" + item.Quantity + "', " +
+                        "'" + item.Discount + "')";
+                        cmd.CommandText = Sql;
+                        cmd.ExecuteNonQuery();
+                    }
+
                 }
                 orders.Clear();
                 return RedirectToAction("Index");
