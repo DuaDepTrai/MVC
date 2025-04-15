@@ -20,11 +20,29 @@ namespace Homework.Controllers
             return View();
         }
 
-        // GET: OrderDetails/Details/5
-        public ActionResult Details(int id)
+        // GET: OrderDetails/Details?OrderID=1&ProductID=5
+        public ActionResult Details(int OrderID, int ProductID)
         {
-            return View();
+            // Lấy danh sách chi tiết đơn hàng từ Session
+            var listOrders = Session["listOrders"] as List<OrderDetails>;
+
+            if (listOrders == null)
+            {
+                return HttpNotFound("Không có dữ liệu đơn hàng trong session.");
+            }
+
+            // Tìm sản phẩm theo OrderID và ProductID
+            var detail = listOrders.FirstOrDefault(x => x.OrderID == OrderID && x.ProductID == ProductID);
+
+            if (detail == null)
+            {
+                return HttpNotFound("Không tìm thấy chi tiết đơn hàng.");
+            }
+
+            return View(detail);
         }
+
+
 
         // GET: OrderDetails/Create
         public ActionResult Create()
@@ -48,7 +66,15 @@ namespace Homework.Controllers
 
                 listOrders.Add(obj);
                 Session["listOrders"] = listOrders;
+                
                 // TODO: Add insert logic here
+                //if (Session["position"] == "Create")
+                //{
+                //    return RedirectToAction("Create", "Orders");
+                //} else
+                //{
+                //    return RedirectToAction("Edit", "Orders");
+                //}
 
                 return RedirectToAction("Create", "Orders");
             }
@@ -58,49 +84,110 @@ namespace Homework.Controllers
             }
         }
 
-        // GET: OrderDetails/Edit/5
-        public ActionResult Edit(int id)
+        // GET: OrderDetails/Edit
+        public ActionResult Edit(int OrderID, int ProductID, string position)
         {
-            return View();
+            ViewBag.Position = position;
+
+            var listOrders = Session["listOrders"] as List<OrderDetails>;
+            if (listOrders == null)
+            {
+                return HttpNotFound("Không tìm thấy session đơn hàng.");
+            }
+
+            var detail = listOrders.FirstOrDefault(o => o.OrderID == OrderID && o.ProductID == ProductID);
+            if (detail == null)
+            {
+                return HttpNotFound("Không tìm thấy chi tiết đơn hàng.");
+            }
+
+            LoadProducts();
+            return View(detail);
         }
 
-        // POST: OrderDetails/Edit/5
+
+        // POST: OrderDetails/Edit
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(OrderDetails obj, string position)
         {
             try
             {
-                // TODO: Add update logic here
+                var listOrders = Session["listOrders"] as List<OrderDetails>;
+                if (listOrders == null)
+                {
+                    return HttpNotFound("Không tìm thấy session đơn hàng.");
+                }
 
-                return RedirectToAction("Index");
+                var existingDetail = listOrders.FirstOrDefault(o => o.OrderID == obj.OrderID && o.ProductID == obj.ProductID);
+
+                if (existingDetail != null)
+                {
+                    existingDetail.Quantity = obj.Quantity;
+                    existingDetail.UnitPrice = obj.UnitPrice;
+                    existingDetail.Discount = obj.Discount;
+                    existingDetail.ProductName = obj.ProductName;
+                    existingDetail.ProductID = obj.ProductID;  // Đảm bảo ProductID được cập nhật
+                }
+
+                Session["listOrders"] = listOrders;
+
+                // ➤ Quay lại đúng màn hình
+                if (position == "Edit")
+                {
+                    return RedirectToAction("Edit", "Orders", new { id = obj.OrderID });
+                }
+
+                return RedirectToAction("Create", "Orders");
             }
             catch
             {
-                return View();
+                LoadProducts();
+                return View(obj);
             }
         }
 
-        // GET: OrderDetails/Delete/5
-        public ActionResult Delete(int id)
+
+        // GET: OrderDetails/Delete
+        public ActionResult Delete(int OrderID, int ProductID)
         {
-            return View();
+            List<OrderDetails> listOrders = Session["listOrders"] as List<OrderDetails>;
+
+            if (listOrders == null)
+            {
+                return HttpNotFound("Không tìm thấy session đơn hàng.");
+            }
+
+            var orderDetail = listOrders.FirstOrDefault(o => o.OrderID == OrderID && o.ProductID == ProductID);
+
+            if (orderDetail == null)
+            {
+                return HttpNotFound("Không tìm thấy sản phẩm trong đơn hàng.");
+            }
+
+            return View(orderDetail);
         }
 
-        // POST: OrderDetails/Delete/5
+
+        // POST: OrderDetails/Delete
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int OrderID, int ProductID)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            List<OrderDetails> listOrders = Session["listOrders"] as List<OrderDetails>;
 
-                return RedirectToAction("Index");
-            }
-            catch
+            if (listOrders != null)
             {
-                return View();
+                var itemToRemove = listOrders.FirstOrDefault(o => o.OrderID == OrderID && o.ProductID == ProductID);
+                if (itemToRemove != null)
+                {
+                    listOrders.Remove(itemToRemove);
+                    Session["listOrders"] = listOrders;
+                }
             }
+
+            return RedirectToAction("Create", "Orders");
         }
+
 
 
         private void LoadProducts()

@@ -7,7 +7,9 @@
 
 <div class="sticky-header">
     <p class="mb-0">
-        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+        @*@Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })*@
+        @Html.ActionLink("Create New", "Create", "Orders", new { reset = true }, new { @class = "btn btn-primary" })
+
     </p>
 </div>
 

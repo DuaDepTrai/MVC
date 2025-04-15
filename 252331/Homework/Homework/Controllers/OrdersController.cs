@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using Homework.Models;
 using System.Diagnostics;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 
 namespace Homework.Controllers
@@ -141,21 +142,23 @@ namespace Homework.Controllers
         }
 
         // GET: Orders/Create
-        public ActionResult Create()
+        public ActionResult Create(bool reset = false)
         {
             LoadCustomers();
             LoadEmployees();
             LoadShippers();
 
-            List<OrderDetails> listOrders = new List<OrderDetails>();
-
-            if (Session["listOrders"] == null)
+            if (reset || Session["listOrders"] == null)
             {
-                Session["listOrders"] = listOrders;
+                Session["listOrders"] = new List<OrderDetails>();
             }
 
+            ViewBag.OrderDetails = Session["listOrders"];
 
-            return View(new Orders());
+
+            Orders obj = new Orders();
+            obj.OrderID = 0;
+            return View(obj);
         }
 
         // POST: Orders/Create
@@ -223,7 +226,7 @@ namespace Homework.Controllers
                     {
                         Sql = "INSERT INTO [Order Details] (OrderID, " +
                         "ProductID, UnitPrice, Quantity, Discount) " +
-                        "Values(" + OrderID + "', " +
+                        "Values(" + OrderID + ", " +
                         "" + item.ProductID + ", " +
                         "'" + item.UnitPrice + "', " +
                         "'" + item.Quantity + "', " +
@@ -233,7 +236,7 @@ namespace Homework.Controllers
                     }
 
                 }
-                orders.Clear();
+                //orders.Clear();
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -251,6 +254,8 @@ namespace Homework.Controllers
         // GET: Orders/Edit/5
         public ActionResult Edit(int id)
         {
+            Session["position"] = "Edit";
+            Session["editingOrderId"] = id;
             LoadCustomers();
             LoadEmployees();
             LoadShippers();
@@ -305,6 +310,36 @@ namespace Homework.Controllers
                 order.ShipPostalCode = dt.Rows[0]["ShipPostalCode"].ToString();
                 order.ShipCountry = dt.Rows[0]["ShipCountry"].ToString();
             }
+
+            List<OrderDetails> listOrders = new List<OrderDetails>();
+
+
+            Sql = "SELECT [Order Details].OrderID, " +
+                "[Order Details].ProductID, " +
+                "[Order Details].UnitPrice, " +
+                "[Order Details].Quantity, " +
+                "[Order Details].Discount, " +
+                "Products.ProductName " +
+                "FROM [Order Details] " +
+                "INNER JOIN Products ON [Order Details].ProductID = Products.ProductID " +
+                "WHERE OrderID=" + id;
+            da = new SqlDataAdapter(Sql, conn);
+            dt = new DataTable();
+            da.Fill(dt);
+
+            foreach (DataRow item in dt.Rows)
+            {
+                OrderDetails details = new OrderDetails();
+                details.OrderID = int.Parse(item["OrderID"].ToString());
+                details.ProductID = int.Parse(item["ProductID"].ToString());
+                details.ProductName = item["ProductName"].ToString();
+                details.UnitPrice = decimal.Parse(item["UnitPrice"].ToString());
+                details.Quantity = short.Parse(item["Quantity"].ToString());
+                details.Discount = float.Parse(item["Discount"].ToString());
+                listOrders.Add(details);
+            }
+            Session["listOrders"] = listOrders;
+
             orders.Clear();
 
             return View(order);
@@ -314,11 +349,69 @@ namespace Homework.Controllers
         [HttpPost]
         public ActionResult Edit(int id, Orders obj)
         {
+            Session["position"] = "Edit";
             if (!ModelState.IsValid)
             {
                 LoadCustomers();
                 LoadEmployees();
                 LoadShippers();
+
+                SqlConnection conn = new SqlConnection(strcnn);
+                string Sql = "SELECT Orders.OrderID, Orders.CustomerID, Orders.EmployeeID, Orders.OrderDate, Orders.RequiredDate, Orders.ShippedDate, Orders.ShipVia, Orders.Freight, Orders.ShipName, Orders.ShipAddress, Orders.ShipCity, Orders.ShipRegion, Orders.ShipPostalCode, Orders.ShipCountry, Customers.CompanyName AS CustomerName, Employees.LastName + ' ' + Employees.FirstName AS EmployeeName, Shippers.CompanyName FROM     Orders LEFT OUTER JOIN Shippers ON Orders.ShipVia = Shippers.ShipperID LEFT OUTER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID LEFT OUTER JOIN Customers ON Orders.CustomerID = Customers.CustomerID WHERE OrderID=" + id;
+                SqlDataAdapter da = new SqlDataAdapter(Sql, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                Orders order = new Orders();
+                if (dt.Rows.Count > 0)
+                {
+                    order.OrderID = int.Parse(dt.Rows[0]["OrderID"].ToString());
+                    order.CustomerID = dt.Rows[0]["CustomerID"].ToString();
+                    order.CustomerName = dt.Rows[0]["CustomerName"].ToString();
+                    order.EmployeeID = int.Parse(dt.Rows[0]["EmployeeID"].ToString());
+                    order.EmployeeName = dt.Rows[0]["EmployeeName"].ToString();
+                    order.OrderDate = (DateTime)dt.Rows[0]["OrderDate"];
+                    order.RequiredDate = (DateTime)dt.Rows[0]["RequiredDate"];
+
+                    if (dt.Rows[0]["ShippedDate"].ToString() != "" && dt.Rows[0]["ShippedDate"] != null)
+                    {
+                        order.ShippedDate = Convert.ToDateTime(dt.Rows[0]["ShippedDate"]);
+                    }
+
+                    order.ShipVia = int.Parse(dt.Rows[0]["ShipVia"].ToString());
+                    order.ShipperName = dt.Rows[0]["ShipperName"].ToString();
+                    order.Freight = decimal.Parse(dt.Rows[0]["Freight"].ToString());
+                    order.ShipName = dt.Rows[0]["ShipName"].ToString();
+                    order.ShipAddress = dt.Rows[0]["ShipAddress"].ToString();
+                    order.ShipCity = dt.Rows[0]["ShipCity"].ToString();
+                    order.ShipRegion = dt.Rows[0]["ShipRegion"].ToString();
+                    order.ShipPostalCode = dt.Rows[0]["ShipPostalCode"].ToString();
+                    order.ShipCountry = dt.Rows[0]["ShipCountry"].ToString();
+                }
+
+                List<OrderDetails> listOrders = new List<OrderDetails>();
+
+
+                Sql = "SELECT [Order Details].OrderID, [Order Details].ProductID, [Order Details].UnitPrice, [Order Details].Quantity, [Order Details].Discount, Products.ProductName FROM     [Order Details] INNER JOIN Products ON [Order Details].ProductID = Products.ProductID WHERE OrderID=" + id;
+                da = new SqlDataAdapter(Sql, conn);
+                dt = new DataTable();
+                da.Fill(dt);
+
+                foreach (DataRow item in dt.Rows)
+                {
+                    OrderDetails details = new OrderDetails();
+                    details.OrderID = int.Parse(item["OrderID"].ToString());
+                    details.ProductID = int.Parse(item["ProductID"].ToString());
+                    details.ProductName = item["ProductName"].ToString();
+                    details.UnitPrice = decimal.Parse(item["UnitPrice"].ToString());
+                    details.Quantity = short.Parse(item["Quantity"].ToString());
+                    details.Discount = float.Parse(item["Discount"].ToString());
+                    listOrders.Add(details);
+                }
+
+
+
+                Session["listOrders"] = listOrders;
+
                 return View(obj);
             }
             try
@@ -354,7 +447,6 @@ namespace Homework.Controllers
                         "ShipPostalCode=N'" + obj.ShipPostalCode + "', " +
                         "ShipCountry=N'" + obj.ShipCountry + "' " +
                         "WHERE OrderID=" + id;
-                    Debug.WriteLine(Sql);  // hoặc Console.WriteLine nếu chạy console
 
                     SqlConnection conn = new SqlConnection(strcnn);
                     if (conn.State == ConnectionState.Closed)
@@ -367,6 +459,32 @@ namespace Homework.Controllers
                     cmd.CommandText = Sql;
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
+
+                    //Xoa dữ lieu cũ của Order
+                    Sql = "DELETE FROM Order Details WHERE OrderID=" + id;
+                    cmd.CommandText = Sql;
+                    cmd.ExecuteNonQuery();
+
+                    //Them lại dữ liệu vào 
+                    List<OrderDetails> orderDetails = new List<OrderDetails>();
+                    int i = 0;
+                    if (Session["listOrders"] != null)
+                    {
+                        orderDetails = (List<OrderDetails>)Session["listOrders"];
+                    }
+                    foreach (var item in orderDetails)
+                    {
+                        Sql = "INSERT INTO  [Order Details] " +
+                            "(OrderID, ProductID, UnitPrice, Quantity, Discount) " +
+                            "VALUES (" + id + "," + 
+                            item.ProductID + ", " + 
+                            item.UnitPrice + "," + 
+                            item.Quantity + ", " + 
+                            item.Discount + " ";
+                        cmd.CommandText = Sql;
+                        cmd.ExecuteNonQuery();
+                    }
+
                 }
                 orders.Clear();
                 return RedirectToAction("Index");
