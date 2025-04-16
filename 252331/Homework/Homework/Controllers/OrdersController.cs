@@ -86,6 +86,9 @@ namespace Homework.Controllers
         // GET: Orders/Details/5
         public ActionResult Details(int id)
         {
+            Session["position"] = "Edit";
+            Session["editingOrderId"] = id;
+
             Orders order = new Orders();
             string Sql = "SELECT Orders.OrderID, " +
                 "Orders.CustomerID, " +
@@ -136,6 +139,36 @@ namespace Homework.Controllers
                 order.ShipPostalCode = dt.Rows[0]["ShipPostalCode"].ToString();
                 order.ShipCountry = dt.Rows[0]["ShipCountry"].ToString();
             }
+
+            List<OrderDetails> listOrders = new List<OrderDetails>();
+
+
+            Sql = "SELECT [Order Details].OrderID, " +
+                "[Order Details].ProductID, " +
+                "[Order Details].UnitPrice, " +
+                "[Order Details].Quantity, " +
+                "[Order Details].Discount, " +
+                "Products.ProductName " +
+                "FROM [Order Details] " +
+                "INNER JOIN Products ON [Order Details].ProductID = Products.ProductID " +
+                "WHERE OrderID=" + id;
+            da = new SqlDataAdapter(Sql, conn);
+            dt = new DataTable();
+            da.Fill(dt);
+
+            foreach (DataRow item in dt.Rows)
+            {
+                OrderDetails details = new OrderDetails();
+                details.OrderID = int.Parse(item["OrderID"].ToString());
+                details.ProductID = int.Parse(item["ProductID"].ToString());
+                details.ProductName = item["ProductName"].ToString();
+                details.UnitPrice = decimal.Parse(item["UnitPrice"].ToString());
+                details.Quantity = short.Parse(item["Quantity"].ToString());
+                details.Discount = float.Parse(item["Discount"].ToString());
+                listOrders.Add(details);
+            }
+            Session["listOrders"] = listOrders;
+
             orders.Clear();
 
             return View(order);

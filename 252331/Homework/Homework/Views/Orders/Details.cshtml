@@ -59,6 +59,76 @@
                 @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }, new { @class = "btn btn-primary me-2" })
                 @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
             </div>
+
+            @{
+                List<Homework.Models.OrderDetails> orderDetails = new List<Homework.Models.OrderDetails>();
+                int i = 0;
+                if (Session["listOrders"] != null)
+                {
+
+
+                    orderDetails = (List<Homework.Models.OrderDetails>)Session["listOrders"];
+
+                }
+
+            }
+
+
+            @*<div class="text-end">
+                @Html.ActionLink("Add New Product", "Create", "OrderDetails", null, new { @class = "btn btn-primary" })
+            </div>*@
+            <table class="table" border="1">
+                <tr>
+                    <th>
+                        #
+                    </th>
+
+                    <th>
+                        Product
+                    </th>
+                    <th>
+                        Unit Price
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                    <th>
+                        Discount
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in orderDetails)
+                {
+                    i = i + 1;
+                    <tr>
+                        <td>
+                            @i
+                        </td>
+
+                        @Html.Hidden("ProductID", item.ProductID)
+
+                        <td>
+                            @Html.Label(item.ProductName.ToString())
+                        </td>
+                        <td>
+                            @Html.Label(item.UnitPrice.ToString())
+                        </td>
+                        <td>
+                            @Html.Label(item.Quantity.ToString())
+                        </td>
+                        <td>
+                            @Html.Label(item.Discount.ToString())
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", "OrderDetails", new { OrderID = Model.OrderID, ProductID = item.ProductID }, null) |
+                            @Html.ActionLink("Edit", "Edit", "OrderDetails", new { OrderID = Model.OrderID, ProductID = item.ProductID, position = "Edit" }, null) |
+                            @Html.ActionLink("Delete", "DeleteConfirmed", "OrderDetails", new { OrderID = Model.OrderID, ProductID = item.ProductID }, null)
+                        </td>
+                    </tr>
+                }
+
+            </table>
         </div>
     </div>
 </div>

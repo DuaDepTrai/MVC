@@ -21,24 +21,23 @@ namespace Homework.Controllers
         }
 
         // GET: OrderDetails/Details?OrderID=1&ProductID=5
-        public ActionResult Details(int OrderID, int ProductID)
+        public ActionResult Details(int OrderID, int ProductID, string position)
         {
-            // Lấy danh sách chi tiết đơn hàng từ Session
-            var listOrders = Session["listOrders"] as List<OrderDetails>;
+            ViewBag.Position = position;
 
+            var listOrders = Session["listOrders"] as List<OrderDetails>;
             if (listOrders == null)
             {
-                return HttpNotFound("Không có dữ liệu đơn hàng trong session.");
+                return HttpNotFound("Không tìm thấy session đơn hàng.");
             }
 
-            // Tìm sản phẩm theo OrderID và ProductID
-            var detail = listOrders.FirstOrDefault(x => x.OrderID == OrderID && x.ProductID == ProductID);
-
+            var detail = listOrders.FirstOrDefault(o => o.OrderID == OrderID && o.ProductID == ProductID);
             if (detail == null)
             {
                 return HttpNotFound("Không tìm thấy chi tiết đơn hàng.");
             }
 
+            LoadProducts();
             return View(detail);
         }
 
