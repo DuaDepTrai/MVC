@@ -25,6 +25,8 @@ namespace AppMVCEntity
         public int EmployeeID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
+        public string FullName => FirstName + " " + LastName;
+
         public string Title { get; set; }
         public string TitleOfCourtesy { get; set; }
         public Nullable<System.DateTime> BirthDate { get; set; }
