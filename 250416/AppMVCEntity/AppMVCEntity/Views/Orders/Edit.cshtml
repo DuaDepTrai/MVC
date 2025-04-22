@@ -11,7 +11,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Order</h4>
         <hr />
@@ -129,6 +129,53 @@
         </div>
     </div>
 }
+
+<hr />
+
+@* Order Details *@
+<div class="text-end mb-2">
+    @Html.ActionLink("Add New Product", "Create", "OrderDetail", new { OrderID = Model.OrderID }, new { @class = "btn btn-primary" })
+</div>
+
+@if (Model.Order_Details != null && Model.Order_Details.Any())
+{
+    int i = 0;
+    <table class="table table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>#</th>
+                <th>Product</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Discount</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Order_Details)
+            {
+                i++;
+                <tr>
+                    <td>@i</td>
+                    @Html.Hidden("ProductID", item.ProductID)
+                    <td>@item.Product.ProductName</td>
+                    <td>@item.UnitPrice</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Discount</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "OrderDetail", new { OrderID = Model.OrderID, ProductID = item.ProductID }, null) |
+                        @Html.ActionLink("Delete", "DeleteConfirmed", "OrderDetail", new { OrderID = Model.OrderID, ProductID = item.ProductID }, null)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-muted fst-italic">No products added yet.</p>
+}
+
 
 <div>
     @Html.ActionLink("Back to List", "Index")

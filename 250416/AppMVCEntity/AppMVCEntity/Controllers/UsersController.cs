@@ -139,7 +139,17 @@ namespace AppMVCEntity.Controllers
                     .FirstOrDefault(u => u.UserName == user.UserName && u.Password == user.Password);
 
                 if (matchedUser != null)
-                {
+                {            
+                    // Ghi cookie nếu nhớ đăng nhập
+                    if (user.Remember)
+                    {
+                        HttpCookie cookie = new HttpCookie("UserName", user.UserName);
+                        cookie.Expires = DateTime.Now.AddDays(30);
+                        Response.Cookies.Add(cookie);
+                    }
+
+                    // Lưu session
+
                     Session["UserID"] = matchedUser.UserID;
                     Session["UserName"] = matchedUser.UserName;
 

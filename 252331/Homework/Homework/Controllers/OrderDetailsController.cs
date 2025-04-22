@@ -66,15 +66,6 @@ namespace Homework.Controllers
                 listOrders.Add(obj);
                 Session["listOrders"] = listOrders;
                 
-                // TODO: Add insert logic here
-                //if (Session["position"] == "Create")
-                //{
-                //    return RedirectToAction("Create", "Orders");
-                //} else
-                //{
-                //    return RedirectToAction("Edit", "Orders");
-                //}
-
                 return RedirectToAction("Create", "Orders");
             }
             catch

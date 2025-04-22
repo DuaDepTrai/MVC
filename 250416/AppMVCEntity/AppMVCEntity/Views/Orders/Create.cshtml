@@ -8,10 +8,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Order</h4>
         <hr />
@@ -126,6 +126,60 @@
             </div>
         </div>
     </div>
+}
+
+<hr />
+
+@* Order Details *@
+@{
+    List<AppMVCEntity.Order_Detail> orderDetails = new List<AppMVCEntity.Order_Detail>();
+    int i = 0;
+    if (Session["listOrders"] != null)
+    {
+        orderDetails = (List<AppMVCEntity.Order_Detail>)Session["listOrders"];
+    }
+}
+
+<div class="text-end mb-2">
+    @Html.ActionLink("Add New Product", "Create", "OrderDetail", null, new { @class = "btn btn-primary" })
+</div>
+
+@if (orderDetails.Count > 0)
+{
+    <table class="table table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>#</th>
+                <th>Product</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Discount</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in orderDetails)
+            {
+                i++;
+                <tr>
+                    <td>@i</td>
+                    @Html.Hidden("ProductID", item.ProductID)
+                    <td>@item.Product.ProductName</td>
+                    <td>@item.UnitPrice</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Discount</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "OrderDetails", new { OrderID = Model?.OrderID, ProductID = item.ProductID, position = "Create" }, null) |
+                        @Html.ActionLink("Delete", "DeleteConfirmed", "OrderDetails", new { OrderID = Model?.OrderID, ProductID = item.ProductID }, null)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-muted fst-italic">No products added yet.</p>
 }
 
 <div>

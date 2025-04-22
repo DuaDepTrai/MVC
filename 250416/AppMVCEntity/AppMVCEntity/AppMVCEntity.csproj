@@ -136,6 +136,7 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderDetailController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RegionController.cs" />
@@ -315,6 +316,7 @@
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
+    <Content Include="Views\OrderDetail\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

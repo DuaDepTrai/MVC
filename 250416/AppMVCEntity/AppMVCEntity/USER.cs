@@ -19,5 +19,6 @@ namespace AppMVCEntity
         public string Password { get; set; }
         public string Discription { get; set; }
         public Nullable<int> EmployeeID { get; set; }
+        public bool Remember { get; set; }
     }
 }

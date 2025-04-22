@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace AppMVCEntity.Controllers
 {
@@ -13,13 +14,20 @@ namespace AppMVCEntity.Controllers
         // GET: Orders
         public ActionResult Index()
         {
-            return View(db.Orders.ToList());
+            return View(db.Orders.OrderByDescending(o=>o.OrderID).ToList());
         }
 
         // GET: Orders/Details/5
         public ActionResult Details(int id)
         {
-            Order order = db.Orders.Find(id);
+            var order = db.Orders
+            .Include(o => o.Order_Details.Select(od => od.Product)) // Load thêm Product nếu muốn hiển thị tên
+            .FirstOrDefault(o => o.OrderID == id);
+
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
             return View(order);
         }
 
@@ -42,15 +50,18 @@ namespace AppMVCEntity.Controllers
         [HttpPost]
         public ActionResult Create(Order obj)
         {
-            var Cus = db.Customers.Select(s => new { CustomerID = s.CustomerID, CompanyName = s.CompanyName }).ToList();
-            ViewBag.CustomerID = new SelectList(Cus, "CustomerID", "CompanyName", obj.CustomerID);
+            if (!ModelState.IsValid) { 
+                var Cus = db.Customers.Select(s => new { CustomerID = s.CustomerID, CompanyName = s.CompanyName }).ToList();
+                ViewBag.CustomerID = new SelectList(Cus, "CustomerID", "CompanyName", obj.CustomerID);
 
-            var Emp = db.Employees.Select(s => new { EmployeeID = s.EmployeeID, FullName = s.FirstName + " " + s.LastName }).ToList();
-            ViewBag.EmployeeID = new SelectList(Emp, "EmployeeID", "FullName", obj.EmployeeID);
+                var Emp = db.Employees.Select(s => new { EmployeeID = s.EmployeeID, FullName = s.FirstName + " " + s.LastName }).ToList();
+                ViewBag.EmployeeID = new SelectList(Emp, "EmployeeID", "FullName", obj.EmployeeID);
 
-            var Shp = db.Shippers.Select(s => new { ShipperID = s.ShipperID, CompanyName = s.CompanyName }).ToList();
-            ViewBag.ShipperID = new SelectList(Shp, "ShipperID", "CompanyName", obj.ShipVia);
+                var Shp = db.Shippers.Select(s => new { ShipperID = s.ShipperID, CompanyName = s.CompanyName }).ToList();
+                ViewBag.ShipperID = new SelectList(Shp, "ShipperID", "CompanyName", obj.ShipVia);
 
+                return View(obj);
+            }
             try
             {
                 // TODO: Add insert logic here
@@ -58,13 +69,41 @@ namespace AppMVCEntity.Controllers
                 {
                     db.Orders.Add(obj);
                     db.SaveChanges();
+
+                    // Lấy OrderID vừa tạo
+                    int newOrderId = obj.OrderID;
+
+                    // Lấy danh sách OrderDetails từ Session
+                    var orderDetails = Session["listOrders"] as List<Order_Detail>;
+                    if (orderDetails != null)
+                    {
+                        foreach (var item in orderDetails)
+                        {
+                            item.OrderID = newOrderId; // Gán OrderID mới vào từng OrderDetail
+                            db.Order_Details.Add(item);
+                        }
+                        db.SaveChanges();
+                        Session["listOrders"] = null; // Xoá session sau khi lưu xong
+                    }
+
                     return RedirectToAction("Index");
 
                 }
                 return View(obj);
             }
-            catch
+            catch (Exception ex)
             {
+                ViewBag.Error = ex.Message;
+
+                var Cus = db.Customers.Select(s => new { CustomerID = s.CustomerID, CompanyName = s.CompanyName }).ToList();
+                ViewBag.CustomerID = new SelectList(Cus, "CustomerID", "CompanyName", obj.CustomerID);
+
+                var Emp = db.Employees.Select(s => new { EmployeeID = s.EmployeeID, FullName = s.FirstName + " " + s.LastName }).ToList();
+                ViewBag.EmployeeID = new SelectList(Emp, "EmployeeID", "FullName", obj.EmployeeID);
+
+                var Shp = db.Shippers.Select(s => new { ShipperID = s.ShipperID, CompanyName = s.CompanyName }).ToList();
+                ViewBag.ShipperID = new SelectList(Shp, "ShipperID", "CompanyName", obj.ShipVia);
+
                 return View(obj);
             }
         }
@@ -72,7 +111,8 @@ namespace AppMVCEntity.Controllers
         // GET: Orders/Edit/5
         public ActionResult Edit(int id)
         {
-            Order order = db.Orders.Find(id);
+            var order = db.Orders.Include(o => o.Order_Details) // Ensure Order_Details are loaded
+                                 .FirstOrDefault(o => o.OrderID == id);
 
             var Cus = db.Customers.Select(s => new { CustomerID = s.CustomerID, CompanyName = s.CompanyName }).ToList();
             ViewBag.CustomerID = new SelectList(Cus, "CustomerID", "CompanyName", order.CustomerID);
@@ -111,8 +151,9 @@ namespace AppMVCEntity.Controllers
                 }
                 return View();
             }
-            catch
+            catch (Exception ex)
             {
+                ViewBag.Error = ex.Message; 
                 return View();
             }
         }

@@ -116,6 +116,41 @@
         </dd>
 
     </dl>
+
+    <h4>Order Details</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Product</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Discount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Order_Details != null && Model.Order_Details.Any())
+            {
+                int i = 1;
+                foreach (var item in Model.Order_Details)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.Product.ProductName</td>
+                        <td>@item.UnitPrice.ToString("C")</td>
+                        <td>@item.Quantity</td>
+                        <td>@(item.Discount * 100)%</td>
+                    </tr>
+                    i++;
+                }
+            }
+            else
+            {
+                <tr><td colspan="5">No order details found.</td></tr>
+            }
+        </tbody>
+    </table>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }) |
