@@ -198,6 +198,69 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\flex-slider.css" />
+    <Content Include="assets\css\font-awesome.css" />
+    <Content Include="assets\css\lightbox.css" />
+    <Content Include="assets\css\owl-carousel.css" />
+    <Content Include="assets\css\templatemo-hexashop.css" />
+    <Content Include="assets\fonts\flexslider-icon.svg" />
+    <Content Include="assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\fonts\slick.svg" />
+    <Content Include="assets\images\about-left-image.jpg" />
+    <Content Include="assets\images\about-us-page-heading.jpg" />
+    <Content Include="assets\images\baner-right-image-01.jpg" />
+    <Content Include="assets\images\baner-right-image-02.jpg" />
+    <Content Include="assets\images\baner-right-image-03.jpg" />
+    <Content Include="assets\images\baner-right-image-04.jpg" />
+    <Content Include="assets\images\close.png" />
+    <Content Include="assets\images\explore-image-01.jpg" />
+    <Content Include="assets\images\explore-image-02.jpg" />
+    <Content Include="assets\images\instagram-01.jpg" />
+    <Content Include="assets\images\instagram-02.jpg" />
+    <Content Include="assets\images\instagram-03.jpg" />
+    <Content Include="assets\images\instagram-04.jpg" />
+    <Content Include="assets\images\instagram-05.jpg" />
+    <Content Include="assets\images\instagram-06.jpg" />
+    <Content Include="assets\images\kid-01.jpg" />
+    <Content Include="assets\images\kid-02.jpg" />
+    <Content Include="assets\images\kid-03.jpg" />
+    <Content Include="assets\images\left-banner-image.jpg" />
+    <Content Include="assets\images\loading.gif" />
+    <Content Include="assets\images\logo.png" />
+    <Content Include="assets\images\men-01.jpg" />
+    <Content Include="assets\images\men-02.jpg" />
+    <Content Include="assets\images\men-03.jpg" />
+    <Content Include="assets\images\next.png" />
+    <Content Include="assets\images\prev.png" />
+    <Content Include="assets\images\products-page-heading.jpg" />
+    <Content Include="assets\images\service-01.jpg" />
+    <Content Include="assets\images\service-02.jpg" />
+    <Content Include="assets\images\service-03.jpg" />
+    <Content Include="assets\images\single-product-01.jpg" />
+    <Content Include="assets\images\single-product-02.jpg" />
+    <Content Include="assets\images\team-member-01.jpg" />
+    <Content Include="assets\images\team-member-02.jpg" />
+    <Content Include="assets\images\team-member-03.jpg" />
+    <Content Include="assets\images\white-logo.png" />
+    <Content Include="assets\images\women-01.jpg" />
+    <Content Include="assets\images\women-02.jpg" />
+    <Content Include="assets\images\women-03.jpg" />
+    <Content Include="assets\js\accordions.js" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\custom.js" />
+    <Content Include="assets\js\datepicker.js" />
+    <Content Include="assets\js\imgfix.min.js" />
+    <Content Include="assets\js\isotope.js" />
+    <Content Include="assets\js\jquery-2.1.0.min.js" />
+    <Content Include="assets\js\jquery.counterup.min.js" />
+    <Content Include="assets\js\lightbox.js" />
+    <Content Include="assets\js\owl-carousel.js" />
+    <Content Include="assets\js\popper.js" />
+    <Content Include="assets\js\quantity.js" />
+    <Content Include="assets\js\scrollreveal.min.js" />
+    <Content Include="assets\js\slick.js" />
+    <Content Include="assets\js\waypoints.min.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -240,6 +303,18 @@
     <Content Include="NW.edmx.diagram">
       <DependentUpon>NW.edmx</DependentUpon>
     </Content>
+    <Content Include="assets\fonts\Flaticon.woff" />
+    <Content Include="assets\fonts\flexslider-icon.eot" />
+    <Content Include="assets\fonts\flexslider-icon.ttf" />
+    <Content Include="assets\fonts\flexslider-icon.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\fonts\FontAwesome.otf" />
+    <Content Include="assets\fonts\slick.eot" />
+    <Content Include="assets\fonts\slick.ttf" />
+    <Content Include="assets\fonts\slick.woff" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -251,6 +326,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Home\index.html" />
+    <Content Include="Views\Home\products.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -317,6 +394,7 @@
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\OrderDetail\Create.cshtml" />
+    <Content Include="Views\Shared\_Layout_old.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

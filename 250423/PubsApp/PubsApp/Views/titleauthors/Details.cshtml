@@ -1,0 +1,51 @@
+﻿@model PubsApp.titleauthor
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>titleauthor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.au_ord)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.au_ord)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.royaltyper)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.royaltyper)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.authors.au_lname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.authors.au_lname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.titles.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.titles.title)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -117,5 +117,18 @@ namespace AppMVCEntity.Controllers
                 return View();
             }
         }
+
+        //Show photo
+        public FileContentResult GetPhoto(int id)
+        {
+            var employee = db.Employees.Find(id);
+            if (employee == null || employee.Photo == null)
+            {
+                string path = Server.MapPath("~/assets/images/default.jpg");
+                byte[] defaultImage = System.IO.File.ReadAllBytes(path);
+                return File(defaultImage, "image/jpeg");
+            }
+            return null;
+        }
     }
 }
