@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace AppMVCEntity.Controllers
 {
@@ -11,9 +12,19 @@ namespace AppMVCEntity.Controllers
         private NorthwindEntities1 db = new NorthwindEntities1();
 
         // GET: Territories
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-            return View(db.Territories.ToList());
+            int sizePerPage = 10;
+            int totalItems = db.Territories.Count();
+            var ter = db.Territories.Include(e => e.Region)
+                                        .OrderBy(e => e.TerritoryID)
+                                        .Skip((page - 1) * sizePerPage)
+                                        .Take(sizePerPage)
+                                        .ToList();
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalItems / sizePerPage);
+
+            return View(ter.ToList());
         }
 
         // GET: Territories/Details/5

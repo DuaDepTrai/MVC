@@ -11,9 +11,18 @@ namespace AppMVCEntity.Controllers
         private NorthwindEntities1 db = new NorthwindEntities1();
 
         // GET: Shippers
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-            return View(db.Suppliers.ToList());
+            int sizePerPage = 6;
+            int totalItems = db.Suppliers.Count();
+            var supp = db.Suppliers.OrderBy(e => e.SupplierID)
+                                        .Skip((page - 1) * sizePerPage)
+                                        .Take(sizePerPage)
+                                        .ToList();
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalItems / sizePerPage);
+
+            return View(supp.ToList());
         }
 
         // GET: Suppliers/Details/5

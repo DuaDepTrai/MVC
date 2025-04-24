@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
+
 
 namespace AppMVCEntity.Controllers
 {
@@ -10,9 +12,18 @@ namespace AppMVCEntity.Controllers
     {
         private NorthwindEntities1 db = new NorthwindEntities1();
         // GET: Employees
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-            return View(db.Employees.ToList());
+            int sizePerPage = 6;
+            int totalItems = db.Employees.Count();
+            var employee = db.Employees.OrderBy(e => e.EmployeeID)
+                                        .Skip((page - 1) * sizePerPage)
+                                        .Take(sizePerPage)
+                                        .ToList();
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalItems / sizePerPage);
+
+            return View(employee.ToList());
         }
 
         // GET: Employees/Details/5
