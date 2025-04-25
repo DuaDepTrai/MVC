@@ -76,16 +76,43 @@
 
             </table>
 
-            <div class="col-lg-12">
-                <div class="pagination">
-                    <ul>
-                        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            @{
+                int maxPagesToShow = 10;
+                int currentPage = ViewBag.CurrentPage;
+                int totalPages = ViewBag.TotalPages;
+
+                int startPage = Math.Max(1, currentPage - (maxPagesToShow / 2));
+                int endPage = Math.Min(totalPages, startPage + maxPagesToShow - 1);
+
+                if (endPage - startPage < maxPagesToShow - 1)
+                {
+                    startPage = Math.Max(1, endPage - maxPagesToShow + 1);
+                }
+            }
+
+            <div class="col-lg-12 text-center">
+                <div class="pagination d-inline-block">
+                    <ul class="pagination">
+                        @if (currentPage > 1)
                         {
-                            <li class="@(i == ViewBag.CurrentPage ? "active" : "")">
-                                <a href="@Url.Action("Index", new {page = i})">@i</a>&nbsp;
+                            <li><a href="@Url.Action("Index", new { page = 1 })">« First</a></li>
+                            <li><a href="@Url.Action("Index", new { page = currentPage - 1 })">‹ Prev</a></li>
+                        }
+
+                        @for (int i = startPage; i <= endPage; i++)
+                        {
+                            <li class="@(i == currentPage ? "active" : "")">
+                                <a href="@Url.Action("Index", new { page = i })">@i</a>
                             </li>
                         }
+
+                        @if (currentPage < totalPages)
+                        {
+                            <li><a href="@Url.Action("Index", new { page = currentPage + 1 })">Next ›</a></li>
+                            <li><a href="@Url.Action("Index", new { page = totalPages })">Last »</a></li>
+                        }
                     </ul>
+                    <p>Page @currentPage of @totalPages</p>
                 </div>
             </div>
 
