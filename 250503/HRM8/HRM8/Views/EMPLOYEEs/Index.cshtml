@@ -11,6 +11,15 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
+@using (Html.BeginForm("Index", "Employees", FormMethod.Get))
+{
+    <p>
+        Search by Name:
+        @Html.TextBox("searchStr",  ViewBag.CurrentSearch as string)
+        <input type="submit" value="Search" class="btn btn-default" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <td>

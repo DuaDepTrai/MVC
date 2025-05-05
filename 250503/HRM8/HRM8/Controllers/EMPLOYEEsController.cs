@@ -15,16 +15,23 @@ namespace HRM8.Controllers
         private HRMDBEntities db = new HRMDBEntities();
 
         // GET: EMPLOYEEs
-        public ActionResult Index(int? orgID)
+        public ActionResult Index(int? orgID, string searchStr)
         {
             var org = db.ORGANIZATION.ToList();
             ViewBag.Organizations = org;
 
-            var eMPLOYEE = db.EMPLOYEE.Include(e => e.ORGANIZATION).Include(e => e.POSITION).Include(e => e.SEX);
+            ViewBag.CurrentSearch = searchStr;
+
+            var eMPLOYEE = db.EMPLOYEE.Include(e => e.ORGANIZATION).Include(e => e.POSITION).Include(e => e.SEX).AsQueryable();
 
             if (orgID.HasValue) 
             {
                 eMPLOYEE = eMPLOYEE.Where(e => e.OrganizationID == orgID.Value );
+            }
+
+            if (!string.IsNullOrEmpty(searchStr))
+            {
+                eMPLOYEE = eMPLOYEE.Where(e => (e.FirstName + "" + e.LastName).Contains(searchStr));
             }
 
             return View(eMPLOYEE.ToList());

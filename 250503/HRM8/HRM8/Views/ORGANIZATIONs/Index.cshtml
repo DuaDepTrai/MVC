@@ -11,74 +11,114 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.OrganizationName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Code)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Address)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Phone)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Fax)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Email)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Website)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ParentID)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Lever)
-                    </th>
-                    <th></th>
-                </tr>
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Organization Name", "Index", new { sortOrder = ViewBag.NameSortParam, page = ViewBag.CurrentPage })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Website)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lever)
+        </th>
+        <th></th>
+    </tr>
 
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.OrganizationName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Code)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Address)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Phone)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Fax)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Website)
-                        </td>
-                        <td>
-                            @(item.Parent != null ? item.Parent.OrganizationName : "")
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Lever)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.OrganizationID }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.OrganizationID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.OrganizationID })
-                        </td>
-                    </tr>
-                }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrganizationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Website)
+            </td>
+            <td>
+                @(item.Parent != null ? item.Parent.OrganizationName : "")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lever)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.OrganizationID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.OrganizationID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.OrganizationID })
+            </td>
+        </tr>
+    }
 
-            </table>
+</table>
+
+
+@{
+    int maxPagesToShow = 10;
+    int currentPage = ViewBag.CurrentPage;
+    int totalPages = ViewBag.TotalPages;
+
+    int startPage = Math.Max(1, currentPage - (maxPagesToShow / 2));
+    int endPage = Math.Min(totalPages, startPage + maxPagesToShow - 1);
+    if (endPage - startPage < maxPagesToShow - 1)
+    {
+        startPage = Math.Max(1, endPage - maxPagesToShow + 1);
+    }
+}
+
+<div class="col-lg-12 text-center">
+    <div class="pagination d-inline-block">
+        <ul class="pagination">
+            @if (currentPage > 1)
+            {
+                <li><a href="@Url.Action("Index", new {page = 1})"> First </a> &nbsp; </li>
+                <li><a href="@Url.Action("Index", new {page = currentPage - 1})"> Prev </a> &nbsp; </li>
+            }
+
+            @for (int i = startPage; i <= endPage; i++)
+            {
+                <li class="@(i == currentPage ? "active" : "")">
+                    <a href="@Url.Action("Index", new {page = i})"> &nbsp;  @i  &nbsp; </a>
+                </li>
+            }
+
+            @if (currentPage < totalPages)
+            {
+                <li><a href="@Url.Action("Index", new {page = currentPage + 1})"> Next </a> &nbsp; </li>
+                <li><a href="@Url.Action("Index", new {page = totalPages})"> Last </a> &nbsp; </li>
+            }
+        </ul>
+        <p>Page @currentPage of @totalPages</p>
+    </div>
+</div>

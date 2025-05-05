@@ -17,6 +17,8 @@ namespace HRM8.Controllers
         // GET: USERS
         public ActionResult Index()
         {
+            ViewBag.IsAdmin = Session["UserName"] != null && Session["UserName"].ToString().Equals("Admin", StringComparison.OrdinalIgnoreCase);
+
             var uSERS = db.USERS.Include(u => u.EMPLOYEE);
             return View(uSERS.ToList());
         }
@@ -40,7 +42,7 @@ namespace HRM8.Controllers
         public ActionResult Create()
         {
             var Emp = db.EMPLOYEE.Select(e => new {EmployeeID = e.EmployeeID, FullName = e.FirstName + " " + e.LastName});
-            ViewBag.EmployeeID = new SelectList(Emp, "EmployeeID", "FirstName");
+            ViewBag.EmployeeID = new SelectList(Emp, "EmployeeID", "FullName");
             return View();
         }
 
@@ -51,7 +53,16 @@ namespace HRM8.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "UsersID,UserName,Password,Discription,EmployeeID,ma_moi")] USERS uSERS)
         {
+
             var Emp = db.EMPLOYEE.Select(e => new { EmployeeID = e.EmployeeID, FullName = e.FirstName + " " + e.LastName });
+
+            if (string.IsNullOrWhiteSpace(uSERS.Password))
+            {
+                ModelState.AddModelError("Password", "Password is required");
+                ViewBag.EmployeeID = new SelectList(Emp, "EmployeeID", "FullName", uSERS.EmployeeID);
+                return View(uSERS);
+            }
+            
             if (ModelState.IsValid)
             {
                 if (db.USERS.Any(u => u.UserName == uSERS.UserName)) 
@@ -66,13 +77,14 @@ namespace HRM8.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EmployeeID = new SelectList(Emp, "EmployeeID", "FirstName", uSERS.EmployeeID);
+            ViewBag.EmployeeID = new SelectList(Emp, "EmployeeID", "FullName", uSERS.EmployeeID);
             return View(uSERS);
         }
 
         // GET: USERS/Edit/5
         public ActionResult Edit(int? id)
         {
+
             var Emp = db.EMPLOYEE.Select(e => new { EmployeeID = e.EmployeeID, FullName = e.FirstName + " " + e.LastName });
             if (id == null)
             {
@@ -83,7 +95,7 @@ namespace HRM8.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.EmployeeID = new SelectList(Emp, "EmployeeID", "FirstName", uSERS.EmployeeID);
+            ViewBag.EmployeeID = new SelectList(Emp, "EmployeeID", "FullName", uSERS.EmployeeID);
             return View(uSERS);
         }
 
@@ -94,7 +106,9 @@ namespace HRM8.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "UsersID,UserName,Password,Discription,EmployeeID,ma_moi")] USERS uSERS)
         {
+
             var Emp = db.EMPLOYEE.Select(e => new { EmployeeID = e.EmployeeID, FullName = e.FirstName + " " + e.LastName });
+
             if (ModelState.IsValid)
             {
                 if (db.USERS.Any(u => u.UserName == uSERS.UserName && u.UsersID != uSERS.UsersID))
@@ -103,18 +117,32 @@ namespace HRM8.Controllers
                     return View(uSERS);
                 }
 
-                uSERS.Password = HashPassword(uSERS.Password);
+
+                if (string.IsNullOrWhiteSpace(uSERS.Password))
+                {
+                    var oldUser = db.USERS.AsNoTracking().FirstOrDefault(u => u.UsersID == uSERS.UsersID);
+                    if (oldUser != null)
+                    {
+                        uSERS.Password = oldUser.Password;
+                    }
+                }
+                else
+                {
+                    uSERS.Password = HashPassword(uSERS.Password);
+                }
+
                 db.Entry(uSERS).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.EmployeeID = new SelectList(Emp, "EmployeeID", "FirstName", uSERS.EmployeeID);
+            ViewBag.EmployeeID = new SelectList(Emp, "EmployeeID", "FullName", uSERS.EmployeeID);
             return View(uSERS);
         }
 
         // GET: USERS/Delete/5
         public ActionResult Delete(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -132,6 +160,7 @@ namespace HRM8.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+
             USERS uSERS = db.USERS.Find(id);
             db.USERS.Remove(uSERS);
             db.SaveChanges();
@@ -202,6 +231,11 @@ namespace HRM8.Controllers
                 var hash = sha.ComputeHash(bytes);
                 return Convert.ToBase64String(hash);
             }
+        }
+
+        private bool IsAdmin()
+        {
+            return Session["UserName"] != null && Session["UserName"].ToString().Equals("Admin", StringComparison.OrdinalIgnoreCase);
         }
     }
 }

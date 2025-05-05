@@ -15,11 +15,36 @@ namespace HRM8.Controllers
         private HRMDBEntities db = new HRMDBEntities();
 
         // GET: ORGANIZATIONs
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, string sortOrder = "")
         {
-            var list = db.ORGANIZATION.ToList();
+            int sizePerPage = 5;
+            int totalItems = db.ORGANIZATION.Count();
 
-            foreach (var item in list) 
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalItems / sizePerPage);
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParam = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+            IQueryable<ORGANIZATION> orgQuery = db.ORGANIZATION;
+
+            // Apply sorting
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    orgQuery = orgQuery.OrderByDescending(o => o.OrganizationName);
+                    break;
+                case "name_asc":
+                default:
+                    orgQuery = orgQuery.OrderBy(o => o.OrganizationName);
+                    break;
+            }
+
+            var list = orgQuery.Skip((page - 1) * sizePerPage)
+                               .Take(sizePerPage)
+                               .ToList();
+
+            // Gán parent
+            foreach (var item in list)
             {
                 item.Parent = db.ORGANIZATION.FirstOrDefault(p => p.OrganizationID == item.ParentID);
             }

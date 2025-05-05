@@ -5,6 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{
+    bool isAdmin = ViewBag.IsAdmin ?? false;
+}
+
 <h2>Details</h2>
 
 <div>
@@ -46,6 +50,24 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.UsersID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UsersID }, new { @class = "admin-only", @data_action = "edit" }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const isAdmin = @isAdmin.ToString().ToLower();
+
+            if (!isAdmin) {
+                document.querySelectorAll(".admin-only").forEach(link => {
+                    link.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        const action = this.dataset.action;
+                        alert("Only Admin can " + action + " users.");
+                    });
+                });
+            }
+        });
+    </script>
+}
