@@ -1,0 +1,146 @@
+﻿@model MedicinesProject.Models.ViewModels.StorageReportViewModel
+
+@{
+    ViewBag.Title = "Reports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*<hr />*@
+
+<!-- Search box -->
+@*<div class="mb-3">
+    <input type="text" id="searchStr" placeholder="Search..." class="form-control" />
+    <button type="submit" class="btn btn-primary mb-2">
+        <i class="fas fa-search"></i>
+    </button>
+</div>*@
+
+<div class="sticky-header mb-3 p-3 bg-light border rounded">
+    <div class="d-flex justify-content-between align-items-center flex-wrap">
+        <div class="btn-group mb-3">
+            <button id="btnInventory" class="btn btn-primary">Inventory</button>
+            <button id="btnExpired" class="btn btn-danger">Expired</button>
+            <button id="btnNearExpiry" class="btn btn-warning">NearExpiry</button>
+        </div>
+        @using (Html.BeginForm("Index", "Reports", FormMethod.Get, new { @class = "form-inline d-flex flex-wrap justify-content-end" }))
+        {
+            <input type="text" name="searchStr" id="searchStr" class="form-control mr-2 mb-2" style="min-width: 450px;" placeholder="Search by Receipt/Batch/Name/Active Ingredient/Supplier" value="@ViewBag.CurrentSearch" />
+
+            @*@Html.DropDownList("activeIngredientFilter",
+                new SelectList(ViewBag.ActiveIngredients as List<string>, ViewBag.ActiveIngredientFilter as string),
+                "Filter by Active Ingredients",
+                new { @class = "form-control mr-2 mb-2" })
+            @Html.DropDownList("supplierFilter",
+                new SelectList(ViewBag.Suppliers as List<string>, ViewBag.SupplierFilter as string),
+                "Filter by Suppliers",
+                new { @class = "form-control mr-2 mb-2" })*@
+
+            <button type="submit" class="btn btn-primary mb-2">
+                <i class="fas fa-search"></i>
+            </button>
+
+            <a href="@Url.Action("Index", "Reports")" class="btn btn-primary mb-2 ml-2">
+                <i class="fas fa-sync-alt"></i>
+            </a>
+        }
+    </div>
+</div>
+
+<!-- Month Select -->
+<div id="monthSelect" style="display:none;" class="mb-3">
+    <label>Select Expiry Duration (Months):</label>
+    <select id="selectMonth" class="form-select" style="width: 200px; display: inline-block;">
+        <option value="1">1 month</option>
+        <option value="3" selected>3 months</option>
+        <option value="6">6 months</option>
+        <option value="9">9 months</option>
+        <option value="12">12 months</option>
+    </select>
+</div>
+
+<!-- Reports -->
+<div id="reportInventory">
+    @Html.Partial("_ReportInventory", Model.InventoryReport)
+</div>
+
+<div id="reportExpired" style="display:none;">
+    @Html.Partial("_ReportExpired", Model.ExpiredReport)
+</div>
+
+<div id="reportNearExpiry" style="display:none;">
+    @Html.Partial("_ReportNearExpiry", Model.NearExpiryReport)
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            // Initial display
+            showReport("inventory");
+
+            // Button click handlers
+            $("#btnInventory").click(function () {
+                showReport("inventory");
+            });
+
+            $("#btnExpired").click(function () {
+                showReport("expired");
+            });
+
+            $("#btnNearExpiry").click(function () {
+                showReport("nearExpiry");
+            });
+
+            function showReport(type) {
+                $("#reportInventory, #reportExpired, #reportNearExpiry").hide();
+                $("#monthSelect").hide();
+
+                switch (type) {
+                    case "inventory":
+                        $("#reportInventory").show();
+                        break;
+                    case "expired":
+                        $("#reportExpired").show();
+                        break;
+                    case "nearExpiry":
+                        $("#reportNearExpiry").show();
+                        $("#monthSelect").show();
+                        break;
+                }
+            }
+
+            // Handle expiry month change
+            $("#selectMonth").change(function () {
+                var months = $(this).val();
+                var searchStr = $("#searchStr").val();
+
+                $.get('@Url.Action("NearExpiryReport", "Reports")', {
+                    months: months,
+                    searchStr: searchStr,
+                    page: 1
+                }).done(function (data) {
+                    $("#reportNearExpiry").html(data);
+                }).fail(function () {
+                    alert("Error loading near expiry report.");
+                });
+            });
+
+            // Optional: live search update on keyup for near expiry
+            $("#searchStr").on("keyup", function () {
+                if ($("#reportNearExpiry").is(":visible")) {
+                    var searchStr = $(this).val();
+                    var months = $("#selectMonth").val();
+
+                    $.get('@Url.Action("NearExpiryReport", "Reports")', {
+                        months: months,
+                        searchStr: searchStr,
+                        page: 1
+                    }).done(function (data) {
+                        $("#reportNearExpiry").html(data);
+                    });
+                }
+            });
+        });
+    </script>
+}

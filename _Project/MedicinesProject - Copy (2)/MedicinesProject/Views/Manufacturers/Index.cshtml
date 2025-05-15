@@ -1,0 +1,131 @@
+﻿@model IEnumerable<MedicinesProject.Manufacturers>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="sticky-header mb-3 p-3 bg-light border rounded">
+    <div class="d-flex justify-content-between align-items-center flex-wrap">
+        <p class="mb-2">
+            @Html.ActionLink("Add New Manufacturer", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+
+        @using (Html.BeginForm("Index", "Manufacturers", FormMethod.Get, new { @class = "form-inline d-flex flex-wrap justify-content-end" }))
+        {
+            <input type="text" name="searchStr" id="searchStr" class="form-control mr-2 mb-2" style="min-width: 300px;" placeholder="Search by Name/Phone/Email" value="@ViewBag.CurrentSearch" />
+
+            @Html.DropDownList("countryFilter",
+            new SelectList(ViewBag.Countries as List<string>, ViewBag.CountryFilter as string),
+            "Filter by Country",
+            new { @class = "form-control mr-2 mb-2" })
+
+            <button type="submit" class="btn btn-primary mb-2">
+                <i class="fas fa-search"></i>
+            </button>
+
+            <a href="@Url.Action("Index", "Manufacturers")" class="btn btn-primary mb-2 ml-2">
+                <i class="fas fa-sync-alt"></i>
+            </a>
+        }
+    </div>
+</div>
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 26%;">
+                Manufacturer Name
+            </th>
+            <th style="width: 10%;">
+                Phone Number
+            </th>
+            <th style="width: 19%;">
+                Email
+            </th>
+            <th style="width: 25%;">
+                Address
+            </th>
+            <th style="width: 10%;">
+                Country
+            </th>
+            <th style="width: 10%;">
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td style=" text-align: center;">
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td class="action-column" style=" text-align: center;">
+                    <a href="@Url.Action("Details", new { id = item.ManufacturerID })" class="btn btn-info btn-sm">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                    <a href="@Url.Action("Edit", new { id = item.ManufacturerID })" class="btn btn-warning btn-sm">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="@Url.Action("Delete", new { id = item.ManufacturerID })" class="btn btn-danger btn-sm">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    int maxPagesToShow = 10;
+    int currentPage = ViewBag.CurrentPage;
+    int totalPages = ViewBag.TotalPages;
+
+    int startPage = Math.Max(1, currentPage - (maxPagesToShow / 2));
+    int endPage = Math.Min(totalPages, startPage + maxPagesToShow - 1);
+
+    if (endPage - startPage < maxPagesToShow - 1)
+    {
+        startPage = Math.Max(1, endPage - maxPagesToShow + 1);
+    }
+}
+
+<div class="col-lg-12 text-center pagination-container">
+    <div class="pagination d-inline-block">
+        <ul class="pagination">
+            @*@if (currentPage > 1)
+                {
+                    <li><a href="@Url.Action("Index", new { page = 1 })">« First</a></li>
+                    <li><a href="@Url.Action("Index", new { page = currentPage - 1 })">‹ Prev</a></li>
+                }*@
+
+            @for (int i = startPage; i <= endPage; i++)
+            {
+                <li class="@(i == currentPage ? "active" : "")">
+                    <a href="@Url.Action("Index", new { page = i })"> @i </a>
+                </li>
+            }
+
+            @*@if (currentPage < totalPages)
+                {
+                    <li><a href="@Url.Action("Index", new { page = currentPage + 1 })">Next ›</a></li>
+                    <li><a href="@Url.Action("Index", new { page = totalPages })">Last »</a></li>
+                }*@
+        </ul>
+        <p style="padding-top: 10px">Page @currentPage of @totalPages</p>
+    </div>
+</div>

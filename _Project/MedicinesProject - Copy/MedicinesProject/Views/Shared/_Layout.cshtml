@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @{
+        if (Session["UserName"] == null)
+        {
+            Response.Redirect("~/Users/Login");
+        }
+    }
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="path/to/your/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+
+    <style>
+        table {
+            table-layout: auto;
+            width: 100%;
+            border-collapse: collapse; /* Gộp viền giữa các ô */
+        }
+
+        td, th {
+            border: 1px solid #dee2e6; /* Viền mảnh màu xám nhẹ */
+            padding: 8px;
+            word-wrap: break-word;
+            white-space: normal;
+            align-content: center;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        .sticky-header {
+            background-color: white;
+            padding: 10px 0;
+        }
+
+        .action-column {
+            width: 180px;
+            white-space: nowrap;
+        }
+
+        .copy-btn {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #007bff;
+            cursor: pointer;
+            padding: 0 4px;
+            font-size: 14px;
+        }
+
+            .copy-btn:hover {
+                color: #0056b3;
+            }
+
+        #alert-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #d1e7dd;
+            border: 1px solid #badbcc;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: #0f5132;
+            font-weight: bold;
+            display: none;
+            z-index: 9999;
+        }
+
+        /* Cố định chiều cao của phần pagination */
+        .pagination-container {
+            position: fixed;
+            bottom: 0px; /* Cách lề dưới 50px */
+            left: 0;
+            width: 100%; /* Chiếm hết chiều rộng của màn hình */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Đảm bảo pagination ở trên các phần tử khác */
+            background-color: #fff; /* Tạo nền trắng cho pagination */
+            padding: 10px 0; /* Tạo khoảng cách cho pagination */
+        }
+
+        .pagination {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 12px;
+        }
+
+        .pagination li {
+            margin: 0 5px;
+        }
+
+        .pagination li a {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            color: #007bff;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .pagination li a:hover {
+                background-color: #007bff;
+                color: white;
+            }
+
+        .pagination li.active a {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .pagination li a:first-child,
+        .pagination li a:last-child {
+            font-weight: bold;
+        }
+    </style>
+
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+</head>
+<body>
+    <div class="navbar navbar-expand-lg navbar-dark bg-dark px-3 sticky-top">
+        <a class="navbar-brand text-light" href="@Url.Action("Index", "Home")"><i class="fas fa-home"></i> Home</a>
+        <a class="btn btn-outline-light mx-1" href="@Url.Action("Index", "Medicines")"><i class="fas fa-capsules"></i> Medicines</a>
+        <a class="btn btn-outline-light mx-1" href="@Url.Action("Index", "MedicineCategories")"><i class="fas fa-th-list"></i> Categories</a>
+        <a class="btn btn-outline-light mx-1" href="@Url.Action("Index", "Storages")"><i class="fas fa-warehouse"></i> Storages</a>
+        <a class="btn btn-outline-light mx-1" href="@Url.Action("Index", "Suppliers")"><i class="fas fa-truck-fast"></i> Suppliers</a>
+        <a class="btn btn-outline-light mx-1" href="@Url.Action("Index", "Manufacturers")"><i class="fas fa-industry"></i> Manufacturers</a>
+        <a class="btn btn-outline-light mx-1" href="@Url.Action("Index", "Users")"><i class="fas fa-user"></i> Users</a>
+        <a class="btn btn-outline-light mx-1" href="@Url.Action("Index", "Reports")"><i class="fas fa-chart-line"></i> Reports</a>
+
+        <div class="ml-auto d-flex align-items-center">
+            @if (Session["FullName"] != null)
+            {
+                <span class="text-light mr-2">👋 Hello, @Session["FullName"]</span>
+                <button class="btn btn-outline-warning" data-toggle="modal" data-target="#logoutModal">Logout</button>
+            }
+        </div>
+
+    </div>
+
+    <div class="container-fluid mt-3">
+        @RenderBody()
+    </div>
+
+
+    @*<div>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>*@
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Modal Bootstrap -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-warning text-dark">
+                    <h5 class="modal-title" id="logoutModalLabel">Confirm logout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure want to logout?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a href="@Url.Action("Logout", "Users")" class="btn btn-warning">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>
